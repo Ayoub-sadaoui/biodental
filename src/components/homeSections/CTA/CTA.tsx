@@ -1,10 +1,11 @@
-'use client'
+"use client";
 import { Card, CardContent } from "../../ui/card";
 import { Button } from "../../ui/button";
 import { PhonePopup } from "../../testimonialSections/testimonialsherosection";
 import { useRef, useState } from "react";
 
-export const CTA = () => {
+export const CTA = ({ homepage }: { homepage?: any }) => {
+  const data = homepage?.data || {};
   const [showPopup, setShowPopup] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -13,11 +14,11 @@ export const CTA = () => {
       <Card className="max-w-4xl mx-auto  border-none shadow-none">
         <CardContent className="flex flex-col items-center justify-center space-y-6 text-center p-0">
           <h1 className="text-[34px] md:text-[53px]  font-[1000] text-[#2b3029] tracking-[-0.80px] leading-[55px] font-playfair-important pb-1">
-            Prêt à transformer votre sourire?
+            {data.cta_title || "Prêt à transformer votre sourire?"}
           </h1>
           <p className="text-[22px]  font-normal text-white ">
-            Voir les rendez-vous disponibles et profitez de la dentisterie bien
-            faite.
+            {data.cta_description ||
+              "Voir les rendez-vous disponibles et profitez de la dentisterie bien faite."}
           </p>
           <div
             className="relative flex flex-col items-center p-1"
@@ -29,7 +30,7 @@ export const CTA = () => {
               onClick={() => setShowPopup((v) => !v)}
             >
               <span className="text-[16px] leading-[16.8px]  font-semibold">
-                Prendre rendez-vous
+                {data.cta_button_label || "Prendre rendez-vous"}
               </span>
               {showPopup && (
                 <div

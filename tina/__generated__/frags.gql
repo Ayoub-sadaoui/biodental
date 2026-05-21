@@ -1,0 +1,72 @@
+fragment Global_settingsParts on Global_settings {
+  __typename
+  logo
+  primary_phone
+  secondary_phone
+  email
+  address
+  navigation_links {
+    __typename
+    label
+    path
+  }
+  social_links {
+    __typename
+    platform
+    url
+  }
+  footer_text
+  cta_button_label
+}
+
+fragment HomepageParts on Homepage {
+  __typename
+  hero_line_one
+  hero_line_one_suffix
+  hero_line_two
+  hero_line_three
+  hero_image_1
+  hero_image_2
+  hero_image_3
+  hero_arrow
+  hero_button_label
+  hero_phone_label
+  about_title
+  about_text
+  about_image
+  features_title
+  features {
+    __typename
+    title
+    description
+    icon_key
+    border_color
+  }
+  services_title
+  reviews_title
+  reviews {
+    __typename
+    avatar
+    name
+    rating
+    text
+    platform
+  }
+  faq_title
+  faqs {
+    __typename
+    question
+    answer
+  }
+  cta_title
+  cta_description
+  cta_button_label
+}
+
+fragment ServiceParts on Service {
+  __typename
+  title
+  description
+  image
+  cta_label
+}

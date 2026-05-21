@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { extractPlainText } from "../../../lib/cmsHelpers";
 import { ReviewCard } from "../../ui/ReviewCard";
 import "./reviews-carousel.css";
 import { motion } from "framer-motion";
@@ -41,11 +42,24 @@ const reviews: Array<{
   },
 ];
 
-export const Reviews = () => {
-  // Duplicate the reviews for seamless infinite scroll
-  const cards = [...reviews, ...reviews];
+export const Reviews = ({ homepage }: { homepage?: any }) => {
+  const data = homepage?.data || {};
+
+  const mappedReviews =
+    Array.isArray(data.reviews) && data.reviews.length > 0
+      ? data.reviews.map((review: any) => ({
+          avatar: review.avatar?.url || "/reviews/aimen.png",
+          name: review.name || "Anonymous",
+          rating: Number(review.rating || 5),
+          text: extractPlainText(review.text) || "",
+          platform: review.platform || "google",
+        }))
+      : reviews;
+
+  const cards = [...mappedReviews, ...mappedReviews];
+
   return (
-    <section className="relative w-full h-full md:h-[95vh] bg-[#243520] flex flex-col items-center py-16  px-6 md:px-0 pb-12">
+    <section className="relative w-full h-full md:h-[95vh] bg-[#243520] flex flex-col items-center py-16 px-6 md:px-0 pb-12">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +67,7 @@ export const Reviews = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         <h2 className="text-white text-[34px] md:text-[50px] font-bold mb-30 text-center font-playfair-important">
-          Votre confiance, selon leurs mots...
+          {data.reviews_title || "Votre confiance, selon leurs mots..."}
         </h2>
       </motion.div>
       <div

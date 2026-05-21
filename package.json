@@ -35,12 +35,14 @@
     "react-icons": "^5.5.0",
     "resend": "^4.5.1",
     "sass": "^1.88.0",
-    "tailwind-merge": "^3.3.0"
+    "tailwind-merge": "^3.3.0",
+    "tinacms": "^3.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@netlify/plugin-nextjs": "^4.41.3",
     "@tailwindcss/postcss": "^4",
+    "@tinacms/cli": "^2.3.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
