@@ -1,40 +1,79 @@
-import { Nav } from "../components/ui/nav";
-import { Footer } from "../components/homeSections/footer/footer";
-import { FAQ } from "../components/homeSections/FAQ/FAQ";
-import { Services } from "../components/homeSections/services/Services";
-import { About } from "../components/homeSections/about/about";
-import { CTA } from "../components/homeSections/CTA/CTA";
-import { Features } from "../components/homeSections/features/Features";
-import { Hero } from "../components/homeSections/hero/hero";
-import { Reviews } from "@/components/homeSections/reviews/page";
-import dynamic from "next/dynamic";
-import GallerySectionClient from "../components/GallerySectionClient";
+import React from "react";
+import HomeClient from "../components/HomeClient";
+import client from "../../tina/__generated__/client";
+import { readFile } from "fs/promises";
+import path from "path";
 
-const GallerySection = dynamic(
-  () => import("../components/testimonialSections/GallerySection")
-);
+export default async function Page() {
+  let servicesResult;
 
-export default function Page() {
-  return (
-    <div className="w-full bg-[#F7F7F5]">
-      <Nav />
-      <div className="relative">
-        <div className="w-full bg-[#F7F7F5] overflow-hidden">
-          {/* Header Section */}
-          <div className="w-full">
-            <Hero />
-          </div>
-          {/* Testimonials Section */}
-          <About />
-          {/* <GallerySectionClient /> */}
-          <Features />
-          <Services />
-          <Reviews />
-          <FAQ />
-        </div>
-      </div>
-      <CTA />
-      <Footer />
-    </div>
-  );
+  try {
+    const homepageFile = path.join(
+      process.cwd(),
+      "content",
+      "homepage",
+      "index.json",
+    );
+    const homepageContents = await readFile(homepageFile, "utf8");
+
+    // Read the checked-in Tina content file directly so rich-text fields stay intact.
+    const homepageData = JSON.parse(homepageContents);
+
+    try {
+      servicesResult = await client.queries.serviceConnection();
+    } catch (error) {
+      console.error("Failed to fetch services data from Tina CMS", error);
+      servicesResult = {
+        data: { serviceConnection: { edges: [] } },
+      };
+    }
+
+    const services =
+      servicesResult.data.serviceConnection.edges?.map((edge: any) => ({
+        data: edge?.node,
+      })) || [];
+
+    return (
+      <HomeClient
+        query=""
+        variables={{}}
+        data={{ homepage: homepageData }}
+        services={services}
+      />
+    );
+  } catch (error) {
+    console.error("Failed to read homepage data from disk", error);
+
+    const homepageResult = {
+      query: "",
+      variables: {},
+      data: { homepage: {} },
+    };
+
+    try {
+      servicesResult = await client.queries.serviceConnection();
+    } catch (serviceError) {
+      console.error(
+        "Failed to fetch services data from Tina CMS",
+        serviceError,
+      );
+      servicesResult = {
+        data: { serviceConnection: { edges: [] } },
+      };
+    }
+
+    const services =
+      servicesResult.data.serviceConnection.edges?.map((edge: any) => ({
+        data: edge?.node,
+      })) || [];
+
+    return (
+      <HomeClient
+        query={homepageResult.query}
+        variables={homepageResult.variables}
+        data={homepageResult.data}
+        services={services}
+      />
+    );
+  }
 }

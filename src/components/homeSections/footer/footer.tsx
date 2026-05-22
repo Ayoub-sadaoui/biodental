@@ -6,41 +6,54 @@ import { useState } from "react";
 import { FiPhone } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FacebookLogo, InstagramLogo, TiktokLogo } from "phosphor-react";
+import { extractPlainText } from "../../../lib/cmsHelpers";
+import { getPhoneContacts } from "@/lib/siteContent";
 
-export const Footer = () => {
-  // Footer navigation data
-  const footerSections = [
-    {
-      title: "Services",
-      links: ["Orthodontie (ODF)", "Cosmetic", "Surgical"],
-    },
-    {
-      title: "Liens",
-      links: ["Accueil", "À propos", "Services", "témoignages"],
-    },
-    {
-      title: "Contact",
-      links: ["+213 7 87 90 78 32", "biodental.dr.fetnaci@gmail.com"],
-    },
-    {
-      title: "Social",
-      isIconSection: true,
-    },
-  ];
+export const Footer = ({ settings }: { settings?: any }) => {
+  const footerLinks =
+    settings?.data?.footer_links?.length > 0
+      ? settings.data.footer_links
+      : [
+          { label: "Privacy Policy", link: { url: "#" } },
+          { label: "Accessibility Statement", link: { url: "#" } },
+        ];
 
-  // Social media icons (Facebook, Instagram, TikTok)
-  const socialIcons = [
-    { src: "/icon.svg", alt: "Facebook" },
-    { src: "/icon-9.svg", alt: "Instagram" },
-    { src: "/icon-3.svg", alt: "TikTok" },
-  ];
+  const socialLinks =
+    settings?.data?.social_links?.length > 0
+      ? settings.data.social_links
+      : [
+          {
+            platform: "facebook",
+            link: {
+              url: "https://web.facebook.com/Biodental.Dr.Fetnaci.S/?_rdc=1&_rdr#",
+            },
+          },
+          {
+            platform: "instagram",
+            link: {
+              url: "https://www.instagram.com/dr.fetnaci_sofiane?igsh=MW12N3YwZmh5ajBqdA%3D%3D",
+            },
+          },
+          {
+            platform: "tiktok",
+            link: {
+              url: "https://www.tiktok.com/@biodental_dr.fetnaci?_t=8W1xx07WI0E&_r=1",
+            },
+          },
+        ];
+
+  const footerCopy =
+    extractPlainText(settings?.data?.footer_text) ||
+    "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement";
+  const footerCredit = settings?.data?.footer_credit || "Made by Ayoub SADAOUI";
+  const footerServices =
+    settings?.data?.footer_services?.length > 0
+      ? settings.data.footer_services
+      : ["Orthodontie", "Cosmetic", "Surgical"];
 
   // State for phone panel
   const [showPhonePanel, setShowPhonePanel] = useState(false);
-  const phoneNumbers = [
-    { number: "07 87 90 78 32", href: "tel:0787907832" },
-    { number: "06 59 77 27 37", href: "tel:0659772737" },
-  ];
+  const phoneNumbers = getPhoneContacts(settings);
 
   return (
     <>
@@ -50,12 +63,12 @@ export const Footer = () => {
           <div className="flex align-center justify-center order-last md:order-first">
             <div className="flex flex-col items-center justify-center md:hidden xl:flex  order-last md:order-first">
               <button className="w-[250px] h-[40px] bg-[#263820] text-white rounded-[6px] shadow font-bold text-[20px] flex items-center justify-center">
-                Prendre rendez-vous
+                {settings?.data?.cta_button_label || "Prendre rendez-vous"}
               </button>
             </div>
           </div>
-          {/* Footer Navigation Sections */}  
-          <div className="flex flex-col md:flex-row w-full   pl-3 justify-between md:justify-center md:gap-[65px] gap-8 order-first md:order-last">
+          {/* Footer Navigation Sections */}
+          <div className="flex flex-col md:flex-row w-full pl-3 justify-between md:justify-center md:gap-[65px] gap-8 order-first md:order-last">
             {/* lines and contact section*/}
             <div className="flex gap-2 justify-between w-[333px]">
               {/* lines */}
@@ -64,38 +77,18 @@ export const Footer = () => {
                   Liens
                 </h3>
                 <ul className="flex flex-col gap-1 text-left">
-                  <li>
-                    <a
-                      href="/"
-                      className="text-[16px] text-[#0F1F0D] font-normal underline tracking-[-0.8px] hover:underline"
-                    >
-                      Accueil
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/about"
-                      className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px] hover:underline"
-                    >
-                      À propos
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="./services"
-                      className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px] hover:underline"
-                    >
-                      Services
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/testimonials"
-                      className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px] hover:underline"
-                    >
-                      témoignages
-                    </a>
-                  </li>
+                  {footerLinks.map((item: any) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.link?.url || "#"}
+                        className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px] hover:underline"
+                        target={item.link?.target || undefined}
+                        rel={item.link?.target ? "noreferrer" : undefined}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
               {/* contact */}
@@ -105,14 +98,15 @@ export const Footer = () => {
                 </h3>
                 <ul className="flex flex-col gap-1 text-left">
                   <li className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px]">
-                    +213 7 87 90 78 32
+                    {settings?.data?.primary_phone || "+213 7 87 90 78 32"}
                   </li>
                   <li>
                     <a
-                      href="mailto:biodental.dr.fetnaci@gmail.com"
+                      href={`mailto:${settings?.data?.email || "biodental.dr.fetnaci@gmail.com"}`}
                       className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.95px] hover:underline"
                     >
-                      biodental.dr.fetnaci@gmail.com
+                      {settings?.data?.email ||
+                        "biodental.dr.fetnaci@gmail.com"}
                     </a>
                   </li>
                 </ul>
@@ -126,15 +120,14 @@ export const Footer = () => {
                   Services
                 </h3>
                 <ul className="flex flex-col gap-1 text-left">
-                  <li className="text-[16px] text-[#0F1F0D] font-[500] tracking-[-0.8px]">
-                    Orthodontie
-                  </li>
-                  <li className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px]">
-                    Cosmetic
-                  </li>
-                  <li className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px]">
-                    Surgical
-                  </li>
+                  {footerServices.map((service: string, index: number) => (
+                    <li
+                      key={service}
+                      className={`text-[16px] text-[#0F1F0D] ${index === 0 ? "font-[500]" : "font-normal"} tracking-[-0.8px]`}
+                    >
+                      {service}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -144,18 +137,33 @@ export const Footer = () => {
                   Social
                 </h3>
                 <div className="flex gap-4 mt-1">
-                  {/* Facebook */}
-                  <a href="https://web.facebook.com/Biodental.Dr.Fetnaci.S/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">
-                    <FacebookLogo size={40} weight="duotone" color="#222" />
-                  </a>
-                  {/* Instagram */}
-                  <a href="https://www.instagram.com/dr.fetnaci_sofiane?igsh=MW12N3YwZmh5ajBqdA%3D%3D" target="_blank" rel="noopener noreferrer">
-                    <InstagramLogo size={40} weight="duotone" color="#222" />
-                  </a>
-                  {/* TikTok */}
-                  <a href="https://www.tiktok.com/@biodental_dr.fetnaci?_t=8W1xx07WI0E&_r=1" target="_blank" rel="noopener noreferrer">
-                    <TiktokLogo size={40} weight="duotone" color="#222" />
-                  </a>
+                  {socialLinks.map((item: any) => {
+                    const iconProps = {
+                      size: 40,
+                      weight: "duotone" as const,
+                      color: "#222",
+                    };
+
+                    return (
+                      <a
+                        key={item.platform}
+                        href={item.url || item.link?.url || "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={item.platform}
+                      >
+                        {item.platform === "facebook" && (
+                          <FacebookLogo {...iconProps} />
+                        )}
+                        {item.platform === "instagram" && (
+                          <InstagramLogo {...iconProps} />
+                        )}
+                        {item.platform === "tiktok" && (
+                          <TiktokLogo {...iconProps} />
+                        )}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -165,22 +173,11 @@ export const Footer = () => {
         <div className="flex justify-center items-center ">
           <div className="flex flex-col md:flex-row justify-between font-[460] items-center mt-6 text-[15px] w-full">
             <div className="mb-2 md:mb-0 flex flex-wrap items-center gap-1 tracking-[-0.77px] text-[#51634B]">
-              <span className="">© BioDental clinic 2024 |</span>
-              <a href="#" className=" hover:underline">
-                Privacy Policy
-              </a>
-              <span className="">|</span>
-              <a
-                href="#"
-                className="text-[#2266ff] hover:underline hidden md:block"
-              >
-                Accessibility Statement
-              </a>
+              <span className="">{footerCopy}</span>
             </div>
             <div className="flex items-center gap-2 font-normal text-right underline">
               <a href="#" className="text-[#2266ff] hover:underline">
-                Made <span className="text-black  no-underline">by</span> Ayoub
-                SADAOUI
+                {footerCredit}
               </a>
             </div>
           </div>

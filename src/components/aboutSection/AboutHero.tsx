@@ -1,25 +1,28 @@
-'use client'
+"use client";
 import React, { useRef, useState } from "react";
 import { Button } from "../../components/ui/button";
 import "../../styles/heroAnimation.css";
 import "animate.css";
 import { FiPhone, FiMenu, FiX } from "react-icons/fi";
-const PHONE_NUMBERS = [
-  "07 87 90 78 32",
-  "06 59 77 27 37",
-];
+import { DEFAULT_PHONE_NUMBERS, getPhoneNumbers } from "@/lib/siteContent";
 
-export function PhonePopup({ open }: { open: boolean }) {
+export function PhonePopup({
+  open,
+  phoneNumbers = DEFAULT_PHONE_NUMBERS,
+}: {
+  open: boolean;
+  phoneNumbers?: string[];
+}) {
   return (
     <div
       className={`fixed w-[192px] border border-white top-[70px] right-[100px]  z-[100] flex flex-col rounded-xl shadow-lg bg-[#9aad92]/90 min-w-[192px] h-[100px] `}
       style={{ boxShadow: "0 4px 24px 0 #0002" }}
     >
-      {PHONE_NUMBERS.map((num, idx) => (
+      {phoneNumbers.map((num, idx) => (
         <a
           key={num}
           href={`tel:${num.replace(/\s/g, "")}`}
-          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === PHONE_NUMBERS.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
+          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === phoneNumbers.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
         >
           <FiPhone className="text-[#fff]" size={18} />
           {num}
@@ -29,10 +32,26 @@ export function PhonePopup({ open }: { open: boolean }) {
   );
 }
 
-const AboutHero = () => {
+const AboutHero = ({
+  settings,
+  pageContent,
+}: {
+  settings?: any;
+  pageContent?: any;
+}) => {
   const [showPopup, setShowPopup] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
+  const ctaLabel =
+    pageContent?.hero_button_label ||
+    settings?.data?.cta_button_label ||
+    "Prendre rendez-vous";
+  const phoneNumbers = getPhoneNumbers(settings);
+  const heroPrefix = pageContent?.hero_title_prefix || "Chez";
+  const heroBrand = pageContent?.hero_title_brand || "BioDental";
+  const heroSuffix =
+    pageContent?.hero_title_suffix ||
+    "La dentisterie aussi naturelle et rassurante qu'une bouffée d'air frais. Ces principes reflètent notre calme assurance, notre expertise pointue et notre dévouement au bien-être des patients.";
 
   return (
     <div className="about-hero-section relative flex flex-col items-center justify-center min-h-[70vh] w-full px-4 py-16 overflow-hidden">
@@ -56,15 +75,11 @@ const AboutHero = () => {
       >
         <div className="py-10">
           <p className="text-[27px] md:text-[40px] text-[#3A4B35] indent-5 ">
-            <span className="font-medium">Chez</span>
+            <span className="font-medium">{heroPrefix}</span>
             <span className="text-[34px] md:text-[55px] italic font-bold font-playfair-important  pl-1 leading-1">
-              BioDental
+              {heroBrand}
             </span>
-            <span className="font-extralight">
-              ,"La dentisterie aussi naturelle et rassurante qu'une bouffée
-              d'air frais. Ces principes reflètent notre calme assurance, notre
-              expertise pointue et notre dévouement au bien-être des patients.
-            </span>
+            <span className="font-extralight">, {heroSuffix}</span>
           </p>
           <div
             className="relative flex flex-col items-center p-1"
@@ -76,14 +91,14 @@ const AboutHero = () => {
               onClick={() => setShowPopup((v) => !v)}
             >
               <span className="text-[16px] leading-[16.8px]  font-normal">
-                Prendre rendez-vous
+                {ctaLabel}
               </span>
               {showPopup && (
                 <div
                   ref={popupRef}
                   className="absolute z-[200] top-[-180px] right-[-100px] -translate-x-1/2"
                 >
-                  <PhonePopup open={showPopup} />
+                  <PhonePopup open={showPopup} phoneNumbers={phoneNumbers} />
                 </div>
               )}
             </Button>

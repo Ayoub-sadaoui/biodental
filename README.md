@@ -77,4 +77,9 @@ npm run start
 - React 19
 - TailwindCSS 4
 - Framer Motion
+- TinaCMS for editable content
 - Deployed on Netlify
+
+## Node.js
+
+This project is set up for Node.js 18.19.x.

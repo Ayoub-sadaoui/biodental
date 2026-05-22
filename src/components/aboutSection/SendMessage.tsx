@@ -1,7 +1,6 @@
-'use client'
+"use client";
 import React, { useState, useRef } from "react";
 import { MdEmail as EnvelopeIcon } from "react-icons/md";
-
 
 const Spinner = () => (
   <svg className="animate-spin h-6 w-6 text-white mx-auto" viewBox="0 0 24 24">
@@ -20,20 +19,25 @@ const Spinner = () => (
 
 const initialForm = { name: "", email: "", message: "" };
 
-const SendMessage = () => {
+const SendMessage = ({ pageContent }: { pageContent?: any }) => {
+  const title = pageContent?.send_message_title || "Contactez-nous";
   const [form, setForm] = useState(initialForm);
-  const [buttonState, setButtonState] = useState<'idle' | 'loading' | 'error' | 'success'>('idle');
+  const [buttonState, setButtonState] = useState<
+    "idle" | "loading" | "error" | "success"
+  >("idle");
   const [error, setError] = useState("");
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    setButtonState('loading');
+    setButtonState("loading");
     try {
       const res = await fetch("/api/send-email", {
         method: "POST",
@@ -44,13 +48,13 @@ const SendMessage = () => {
         const data = await res.json();
         throw new Error(data.error || "Échec de l'envoi du message");
       }
-      setButtonState('success');
+      setButtonState("success");
       setForm(initialForm);
-      timeoutRef.current = setTimeout(() => setButtonState('idle'), 5000);
+      timeoutRef.current = setTimeout(() => setButtonState("idle"), 5000);
     } catch (err: any) {
       setError(err.message || "Échec de l'envoi du message");
-      setButtonState('error');
-      timeoutRef.current = setTimeout(() => setButtonState('idle'), 5000);
+      setButtonState("error");
+      timeoutRef.current = setTimeout(() => setButtonState("idle"), 5000);
     }
   };
 
@@ -68,7 +72,7 @@ const SendMessage = () => {
       >
         <div className="flex items-center justify-center">
           <h2 className="text-[34px] md:text-[50px] font-bold min-w-fit font-playfair-important text-[#2b3029] mb-8 text-center  ">
-            Contactez-nous 
+            {title}
           </h2>
           <span className="ml-2 rotate-[330deg] mb-8">
             <EnvelopeIcon className="text-black w-[46px] h-[42px]" />
@@ -87,7 +91,6 @@ const SendMessage = () => {
             type="text"
             autoComplete="name"
             className="w-full px-4 py-2 rounded-md bg-transparent border border-white focus:border-white focus:ring-2 focus:ring-white/30 outline-none text-white placeholder:text-white transition"
-            
             required
             value={form.name}
             onChange={handleChange}
@@ -107,7 +110,6 @@ const SendMessage = () => {
             type="email"
             autoComplete="email"
             className="w-full px-4 py-2 rounded-md bg-transparent border border-white focus:border-white focus:ring-2 focus:ring-white/30 outline-none text-white placeholder:text-white transition"
-           
             required
             value={form.email}
             onChange={handleChange}

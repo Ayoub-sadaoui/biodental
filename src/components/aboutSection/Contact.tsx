@@ -3,12 +3,27 @@ import { IoMdStopwatch, IoMdMail } from "react-icons/io";
 import { MdLocalPhone as PhoneIcon } from "react-icons/md";
 import { FaMapMarkerAlt as PlaceIcon } from "react-icons/fa";
 
-const Contact = () => {
+const Contact = ({
+  settings,
+  pageContent,
+}: {
+  settings?: any;
+  pageContent?: any;
+}) => {
+  const address = settings?.data?.address || "Annaba, Algérie";
+  const email = settings?.data?.email || "biodental.dr.fetnaci@gmail.com";
+  const primaryPhone = settings?.data?.primary_phone || "07 87 90 78 32";
+  const workingHoursTitle =
+    settings?.data?.working_hours_title || "Working hours:";
+  const workingDays = settings?.data?.working_days || "Saturday – Thursday";
+  const workingHours = settings?.data?.working_hours || "9:00am to 6:00pm";
+  const contactTitle = pageContent?.contact_title || "Contact";
+
   return (
     <section className="w-full  bg-[#fff] flex flex-col items-center justify-center py-20 px-4">
       {/* Title */}
       <h1 className="font-playfair-important  text-[34px] md:text-[50px] text-[#243520] font-bold mb-10 text-center">
-        Contact
+        {contactTitle}
       </h1>
       <div className="flex flex-col md:flex-row w-full max-w-[1100px] gap-10 md:gap-20 items-start justify-center px-4">
         {/* Left: Contact Info */}
@@ -16,9 +31,7 @@ const Contact = () => {
           {/* Address */}
           <div className="flex items-center gap-3">
             <div className="text-[18px] text-[#222] leading-snug">
-              8 mars, plaine ouest, cité 1172 lgts,
-              <br />
-              bloc 60, Annaba, Algeria
+              {address}
             </div>
           </div>
           {/* Email & Phone in the same row */}
@@ -29,10 +42,10 @@ const Contact = () => {
                 <IoMdMail style={{ color: "#697C63" }} fontSize={18} />
               </span>
               <a
-                href="mailto:biodental.dr.fetnaci@gmail.com"
+                href={`mailto:${email}`}
                 className="text-[18px] text-[#222] hover:underline"
               >
-                biodental.dr.fetnaci@gmail.com
+                {email}
               </a>
             </div>
             {/* Phone */}
@@ -41,10 +54,10 @@ const Contact = () => {
                 <PhoneIcon style={{ color: "#697C63" }} fontSize={18} />
               </span>
               <a
-                href="tel:+2130659772737"
+                href={`tel:${primaryPhone.replace(/\s/g, "")}`}
                 className="text-[18px] text-[#222] hover:underline"
               >
-                +213 0659 77 27 37
+                {primaryPhone}
               </a>
             </div>
           </div>
@@ -55,12 +68,12 @@ const Contact = () => {
             </span>
             <div>
               <div className="text-[24px] font-medium text-[#243520] mb-1">
-                Working hours:
+                {workingHoursTitle}
               </div>
               <div className="text-[18px] text-[#222]">
-                Saturday – Thursday
+                {workingDays}
                 <br />
-                9:00am to 6:00pm
+                {workingHours}
               </div>
             </div>
           </div>

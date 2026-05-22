@@ -2,10 +2,10 @@ Netlify Deploy MCP Rules
 ========================
 
 1. Specify a Supported Node.js Version
-   - Add a `.nvmrc` file at the root of your project with a supported Node.js version (e.g., `20.11.1`).
+    - Add a `.nvmrc` file at the root of your project with a supported Node.js version (e.g., `18.19.1`).
    - Add an `engines` field in your `package.json`:
      "engines": {
-       "node": ">=20.0.0 <21.0.0"
+          "node": ">=18.18.0 <19.0.0"
      }
 
 2. Ignore Non-Critical Warnings

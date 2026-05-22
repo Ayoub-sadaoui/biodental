@@ -1,0 +1,86 @@
+{
+  "hero_title_line_one": "Sourires authentiques,",
+  "hero_title_highlight": "vraies",
+  "hero_title_line_two": "et de",
+  "hero_title_line_three": "nouvelles vies",
+  "hero_description": "Découvrez le confort et la confiance que nos soins dentaires personnalisés ont apportés à des personnes de tous âges.",
+  "hero_button_label": "Prendre rendez-vous",
+  "hero_image_1": "/TESI-PAGE/t-hero-1.png",
+  "hero_image_2": "/TESI-PAGE/t-hero-2.png",
+  "hero_image_3": "/TESI-PAGE/t-hero-3.png",
+  "before_after_title": "Voir nos patients heureux",
+  "before_after_pairs": [
+    {
+      "before_image": "/before-after/before 1.png",
+      "after_image": "/before-after/after 1.png",
+      "before_alt": "Avant 1",
+      "after_alt": "Après 1"
+    },
+    {
+      "before_image": "/before-after/before 2.png",
+      "after_image": "/before-after/after 2.png",
+      "before_alt": "Avant 2",
+      "after_alt": "Après 2"
+    },
+    {
+      "before_image": "/before-after/before 3.png",
+      "after_image": "/before-after/after 3.png",
+      "before_alt": "Avant 3",
+      "after_alt": "Après 3"
+    },
+    {
+      "before_image": "/before-after/before 4.png",
+      "after_image": "/before-after/after 4.png",
+      "before_alt": "Avant 4",
+      "after_alt": "Après 4"
+    },
+    {
+      "before_image": "/before-after/before 5.png",
+      "after_image": "/before-after/after 5.png",
+      "before_alt": "Avant 5",
+      "after_alt": "Après 5"
+    },
+    {
+      "before_image": "/before-after/before 6.jpeg",
+      "after_image": "/before-after/after 6.jpeg",
+      "before_alt": "Avant 6",
+      "after_alt": "Après 6"
+    },
+    {
+      "before_image": "/before-after/before 7.jpeg",
+      "after_image": "/before-after/after 7.jpeg",
+      "before_alt": "Avant 7",
+      "after_alt": "Après 7"
+    }
+  ],
+  "more_title": "Et plus…",
+  "more_panels": [
+    {
+      "kind": "video",
+      "src": "/video/vid-simle-2.mp4",
+      "poster": "/video/vid-img-2.png",
+      "alt": "Vidéo témoignage 1"
+    },
+    {
+      "kind": "image",
+      "src": "/tesi-page/t-hero-5.png",
+      "alt": "Témoignage visuel 1"
+    },
+    {
+      "kind": "image",
+      "src": "/tesi-page/t-hero-1.png",
+      "alt": "Témoignage visuel 2"
+    },
+    {
+      "kind": "image",
+      "src": "/tesi-page/t-hero-4.png",
+      "alt": "Témoignage visuel 3"
+    },
+    {
+      "kind": "video",
+      "src": "/video/vid-smile-1.mp4",
+      "poster": "/video/vid-img-1.png",
+      "alt": "Vidéo témoignage 2"
+    }
+  ]
+}

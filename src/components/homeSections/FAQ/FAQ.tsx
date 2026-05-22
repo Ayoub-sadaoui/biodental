@@ -8,40 +8,50 @@ import {
   AccordionTrigger,
 } from "../../ui/accordion";
 import { Card, CardContent } from "../../ui/card";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+import { extractPlainText } from "../../../lib/cmsHelpers";
 
 const MotionContent = motion(CardContent);
-const MotionAccordionContent = motion(AccordionContent);
 
-export const FAQ = () => {
-  // FAQ data for mapping
-  const faqItems = [
-    {
-      question: "What is the cost of a dental bridge in Algeria?",
-      answer: "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation.",
-    },
-    {
-      question: "How often should I see my dentist during orthodontic treatment?",
-      answer: "A. It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners.",
-    },
-    {
-      question: "Which dental braces are right for me?",
-      answer: "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile.",
-    },
-  ];
+const defaultFaqItems = [
+  {
+    question: "What is the cost of a dental bridge in Algeria?",
+    answer:
+      "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation.",
+  },
+  {
+    question: "How often should I see my dentist during orthodontic treatment?",
+    answer:
+      "A. It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners.",
+  },
+  {
+    question: "Which dental braces are right for me?",
+    answer:
+      "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile.",
+  },
+];
+
+export const FAQ = ({ homepage }: { homepage?: any }) => {
+  const data = homepage?.data || {};
+
+  const faqItems =
+    Array.isArray(data.faqs) && data.faqs.length > 0
+      ? data.faqs.map((item: any) => ({
+          question: item.question,
+          answer: item.answer,
+        }))
+      : defaultFaqItems;
 
   return (
     <div className="w-full py-[60px] md:py-20 bg-[#9aae92] px-[20px] md:px-[30px] lg:px-0">
       <div className="max-w-[1050px] mx-auto relative">
-        {/* FAQ Title */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#9aae92] px-3">
           <h2 className="font-playfair-important font-bold text-[#2b3029] text-[45.5px] tracking-[-0.80px] leading-[60px]">
-            FAQs
+            {data.faq_title || "FAQs"}
           </h2>
         </div>
 
-        {/* FAQ Card */}
-        <Card className="rounded-2xl border-2 border-solid border-[#f7f7f5] mt-0   md:mt-8  pt-5 md:pt-14">
+        <Card className="rounded-2xl border-2 border-solid border-[#f7f7f5] mt-0 md:mt-8 pt-5 md:pt-14">
           <MotionContent
             className="p-8"
             initial={{ opacity: 0, y: 50 }}
@@ -50,7 +60,7 @@ export const FAQ = () => {
             viewport={{ once: true, amount: 0.2 }}
           >
             <Accordion type="single" collapsible className="w-full">
-              {faqItems.map((item, index) => (
+              {faqItems.map((item: any, index: number) => (
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
@@ -64,20 +74,18 @@ export const FAQ = () => {
                       {item.question}
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent 
-                    className="relative text-[16px] md:text-[17.3px] md:tracking-[0.18px] md:leading-[25.2px] data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden"
-                  >
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
-                         className="pt-4 border-t border-[#f7f7f5]"
-                      >
-                    <div className="pl-[54px]">
-                        {item.answer || "Content not provided"}
-                    </div>
-                      </motion.div>
+                  <AccordionContent className="relative overflow-hidden text-[16px] md:text-[17.3px] md:tracking-[0.18px] md:leading-[25.2px] data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="pt-4 border-t border-[#f7f7f5]"
+                    >
+                      <div className="pl-[54px]">
+                        {extractPlainText(item.answer)}
+                      </div>
+                    </motion.div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
