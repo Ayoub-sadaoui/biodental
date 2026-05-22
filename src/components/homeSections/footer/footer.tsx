@@ -45,8 +45,7 @@ export const Footer = ({ settings }: { settings?: any }) => {
   const footerCopy =
     extractPlainText(settings?.data?.footer_text) ||
     "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement";
-  const footerCredit =
-    settings?.data?.footer_credit || "Made by Ayoub SADAOUI";
+  const footerCredit = settings?.data?.footer_credit || "Made by Ayoub SADAOUI";
   const footerServices =
     settings?.data?.footer_services?.length > 0
       ? settings.data.footer_services
