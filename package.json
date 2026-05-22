@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "if [ -n \"$NEXT_PUBLIC_TINA_CLIENT_ID\" ] && [ -n \"$TINA_TOKEN\" ] && [ -n \"$NEXT_PUBLIC_TINA_BRANCH\" ]; then tinacms build; else echo 'Skipping Tina build: missing Tina env vars'; fi && next build",
     "start": "next start",
     "lint": "next lint",
     "netlify:deploy:draft": "netlify deploy --build",
