@@ -423,7 +423,7 @@ var config_default = defineConfig({
           { type: "image", name: "mission_image", label: "Mission Image" },
           { type: "string", name: "cabinet_title", label: "Cabinet Title" },
           {
-            type: "string",
+            type: "image",
             name: "cabinet_images",
             label: "Cabinet Images",
             list: true

@@ -520,7 +520,7 @@ export type About_PageFilter = {
   mission_text?: InputMaybe<StringFilter>;
   mission_image?: InputMaybe<ImageFilter>;
   cabinet_title?: InputMaybe<StringFilter>;
-  cabinet_images?: InputMaybe<StringFilter>;
+  cabinet_images?: InputMaybe<ImageFilter>;
   send_message_title?: InputMaybe<StringFilter>;
   cta_title?: InputMaybe<StringFilter>;
   cta_description?: InputMaybe<StringFilter>;

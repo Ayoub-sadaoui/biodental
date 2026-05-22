@@ -367,7 +367,7 @@ input About_pageFilter {
   mission_text: StringFilter
   mission_image: ImageFilter
   cabinet_title: StringFilter
-  cabinet_images: StringFilter
+  cabinet_images: ImageFilter
   send_message_title: StringFilter
   cta_title: StringFilter
   cta_description: StringFilter
