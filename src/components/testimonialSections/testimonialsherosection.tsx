@@ -7,19 +7,25 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import { FiPhone, FiMenu, FiX } from "react-icons/fi";
-const PHONE_NUMBERS = ["07 87 90 78 32", "06 59 77 27 37"];
+import { DEFAULT_PHONE_NUMBERS, getPhoneNumbers } from "@/lib/siteContent";
 
-export function PhonePopup({ open }: { open: boolean }) {
+export function PhonePopup({
+  open,
+  phoneNumbers = DEFAULT_PHONE_NUMBERS,
+}: {
+  open: boolean;
+  phoneNumbers?: string[];
+}) {
   return (
     <div
       className={`fixed w-[192px] border border-white top-[70px] right-[100px]  z-[100] flex flex-col rounded-xl shadow-lg bg-[#9aad92]/90 min-w-[192px] h-[100px] `}
       style={{ boxShadow: "0 4px 24px 0 #0002" }}
     >
-      {PHONE_NUMBERS.map((num, idx) => (
+      {phoneNumbers.map((num, idx) => (
         <a
           key={num}
           href={`tel:${num.replace(/\s/g, "")}`}
-          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === PHONE_NUMBERS.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
+          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === phoneNumbers.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
         >
           <FiPhone className="text-[#fff]" size={18} />
           {num}
@@ -55,10 +61,33 @@ const initialImages = [
   },
 ];
 
-export default function TestimonialHeroSection() {
+export default function TestimonialHeroSection({
+  settings,
+  pageContent,
+}: {
+  settings?: any;
+  pageContent?: any;
+}) {
   const [showPopup, setShowPopup] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
+  const ctaLabel =
+    pageContent?.hero_button_label ||
+    settings?.data?.cta_button_label ||
+    "Prendre rendez-vous";
+  const phoneNumbers = getPhoneNumbers(settings);
+  const heroTitleLineOne =
+    pageContent?.hero_title_line_one || "Sourires authentiques,";
+  const heroTitleHighlight = pageContent?.hero_title_highlight || "vraies";
+  const heroTitleLineTwo = pageContent?.hero_title_line_two || "et de";
+  const heroTitleLineThree =
+    pageContent?.hero_title_line_three || "nouvelles vies";
+  const heroDescription =
+    pageContent?.hero_description ||
+    "Découvrez le confort et la confiance que nos soins dentaires personnalisés ont apportés à des personnes de tous âges.";
+  const heroImage1 = pageContent?.hero_image_1 || "/TESI-PAGE/t-hero-1.png";
+  const heroImage2 = pageContent?.hero_image_2 || "/TESI-PAGE/t-hero-2.png";
+  const heroImage3 = pageContent?.hero_image_3 || "/TESI-PAGE/t-hero-3.png";
   return (
     <section className="w-full bg-[#9aae92] flex justify-center items-center pt-[140px] pb-[60px]  xl:py-[40px] h-full xl:h-[100vh] overflow-hidden">
       <div className="max-w-6xl  xl:pt-10 w-full mx-auto flex flex-col xl:flex-row gap-8 xl:gap-0 px-[24px]  items-center justify-center ">
@@ -66,16 +95,17 @@ export default function TestimonialHeroSection() {
         <div className="flex-1 flex flex-col justify-center xl:justify-start xl:pt-11 z-10 text-center xl:text-left">
           <div className="w-full xl:max-w-xl xl:lg:max-w-2xl">
             <h1 className="font-playfair-important font-black text-[34px] xl:text-[50px] leading-[1.2] tracking-[-0.8px] md:tracking-[0px] text-[#2B3029] text-center xl:text-left mb-5">
-              Sourires authentiques,
+              {heroTitleLineOne}
               <br />
-              histoires <span className="text-[#f7f7f5]">vraies</span> et de
+              histoires{" "}
+              <span className="text-[#f7f7f5]">{heroTitleHighlight}</span>{" "}
+              {heroTitleLineTwo}
               <br />
-              nouvelles vies
+              {heroTitleLineThree}
             </h1>
             <p className="text-[#F7F7F5] text-[24px]  leading-[1.2]  mb-8 font-medium">
-              <span className="text-[#2B3029]"> Découvrez</span> le confort et
-              la confiance que nos soins dentaires personnalisés ont apportés à
-              des personnes de tous âges.
+              <span className="text-[#2B3029]"> Découvrez</span>{" "}
+              {heroDescription}
             </p>
             <div
               className="relative flex flex-col items-center xl:items-start p-1"
@@ -87,14 +117,14 @@ export default function TestimonialHeroSection() {
                 onClick={() => setShowPopup((v) => !v)}
               >
                 <span className="text-[16px] leading-[16.8px]  font-semibold">
-                  Prendre rendez-vous
+                  {ctaLabel}
                 </span>
                 {showPopup && (
                   <div
                     ref={popupRef}
                     className="absolute z-[200] top-[-180px] right-[-100px] -translate-x-1/2"
                   >
-                    <PhonePopup open={showPopup} />
+                    <PhonePopup open={showPopup} phoneNumbers={phoneNumbers} />
                   </div>
                 )}
               </Button>
@@ -105,7 +135,7 @@ export default function TestimonialHeroSection() {
         <div className="relative flex-1 flex items-center justify-center w-full h-full min-h-[350px] md:w-[350px]   xl:min-h-[420px]">
           {/* Top image (child) */}
           <motion.img
-            src="/TESI-PAGE/t-hero-1.png"
+            src={heroImage1}
             alt="Smile 1"
             width={200}
             height={236}
@@ -119,7 +149,7 @@ export default function TestimonialHeroSection() {
           />
           {/* Bottom left image (teeth) */}
           <motion.img
-            src="/TESI-PAGE/t-hero-2.png"
+            src={heroImage2}
             alt="Smile 2"
             width={300}
             height={140}
@@ -133,7 +163,7 @@ export default function TestimonialHeroSection() {
           />
           {/* Bottom right image (braces) */}
           <motion.img
-            src="/TESI-PAGE/t-hero-3.png"
+            src={heroImage3}
             alt="Smile 3"
             width={260}
             height={140}

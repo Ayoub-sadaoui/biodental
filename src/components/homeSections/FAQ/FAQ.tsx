@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import { extractPlainText } from "../../../lib/cmsHelpers";
 import { AiOutlinePlus } from "react-icons/ai";
 import {
   Accordion,
@@ -10,6 +9,7 @@ import {
 } from "../../ui/accordion";
 import { Card, CardContent } from "../../ui/card";
 import { motion } from "framer-motion";
+import { extractPlainText } from "../../../lib/cmsHelpers";
 
 const MotionContent = motion(CardContent);
 
@@ -38,7 +38,7 @@ export const FAQ = ({ homepage }: { homepage?: any }) => {
     Array.isArray(data.faqs) && data.faqs.length > 0
       ? data.faqs.map((item: any) => ({
           question: item.question,
-          answer: extractPlainText(item.answer) || "Content not provided",
+          answer: item.answer,
         }))
       : defaultFaqItems;
 
@@ -83,7 +83,7 @@ export const FAQ = ({ homepage }: { homepage?: any }) => {
                       className="pt-4 border-t border-[#f7f7f5]"
                     >
                       <div className="pl-[54px]">
-                        {item.answer || "Content not provided"}
+                        {extractPlainText(item.answer)}
                       </div>
                     </motion.div>
                   </AccordionContent>

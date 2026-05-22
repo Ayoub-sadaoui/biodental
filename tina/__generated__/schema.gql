@@ -60,12 +60,18 @@ type Query {
   homepageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: HomepageFilter): HomepageConnection!
   service(relativePath: String): Service!
   serviceConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: ServiceFilter): ServiceConnection!
+  about_page(relativePath: String): About_page!
+  about_pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: About_pageFilter): About_pageConnection!
+  testimonials_page(relativePath: String): Testimonials_page!
+  testimonials_pageConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: Testimonials_pageFilter): Testimonials_pageConnection!
 }
 
 input DocumentFilter {
   global_settings: Global_settingsFilter
   homepage: HomepageFilter
   service: ServiceFilter
+  about_page: About_pageFilter
+  testimonials_page: Testimonials_pageFilter
 }
 
 type DocumentConnectionEdges {
@@ -91,7 +97,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Global_settings | Homepage | Service | Folder
+union DocumentNode = Global_settings | Homepage | Service | About_page | Testimonials_page | Folder
 
 type Global_settingsNavigation_links {
   label: String
@@ -111,7 +117,10 @@ type Global_settings implements Node & Document {
   address: String
   navigation_links: [Global_settingsNavigation_links]
   social_links: [Global_settingsSocial_links]
+  footer_services: [String]
+  services_page_title: String
   footer_text: String
+  footer_credit: String
   cta_button_label: String
   id: ID!
   _sys: SystemInfo!
@@ -150,7 +159,10 @@ input Global_settingsFilter {
   address: StringFilter
   navigation_links: Global_settingsNavigation_linksFilter
   social_links: Global_settingsSocial_linksFilter
+  footer_services: StringFilter
+  services_page_title: StringFilter
   footer_text: StringFilter
+  footer_credit: StringFilter
   cta_button_label: StringFilter
 }
 
@@ -315,6 +327,138 @@ type ServiceConnection implements Connection {
   edges: [ServiceConnectionEdges]
 }
 
+type About_page implements Node & Document {
+  hero_title_prefix: String
+  hero_title_brand: String
+  hero_title_suffix: String
+  hero_button_label: String
+  about_title: String
+  about_text: JSON
+  about_image: String
+  vision_title: String
+  vision_text: String
+  vision_image: String
+  mission_title: String
+  mission_text: String
+  mission_image: String
+  cabinet_title: String
+  cabinet_images: [String]
+  send_message_title: String
+  cta_title: String
+  cta_description: String
+  cta_button_label: String
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input About_pageFilter {
+  hero_title_prefix: StringFilter
+  hero_title_brand: StringFilter
+  hero_title_suffix: StringFilter
+  hero_button_label: StringFilter
+  about_title: StringFilter
+  about_text: RichTextFilter
+  about_image: ImageFilter
+  vision_title: StringFilter
+  vision_text: StringFilter
+  vision_image: ImageFilter
+  mission_title: StringFilter
+  mission_text: StringFilter
+  mission_image: ImageFilter
+  cabinet_title: StringFilter
+  cabinet_images: StringFilter
+  send_message_title: StringFilter
+  cta_title: StringFilter
+  cta_description: StringFilter
+  cta_button_label: StringFilter
+}
+
+type About_pageConnectionEdges {
+  cursor: String!
+  node: About_page
+}
+
+type About_pageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [About_pageConnectionEdges]
+}
+
+type Testimonials_pageBefore_after_pairs {
+  before_image: String
+  after_image: String
+  before_alt: String
+  after_alt: String
+}
+
+type Testimonials_pageMore_panels {
+  kind: String
+  src: String
+  poster: String
+  alt: String
+}
+
+type Testimonials_page implements Node & Document {
+  hero_title_line_one: String
+  hero_title_highlight: String
+  hero_title_line_two: String
+  hero_title_line_three: String
+  hero_description: String
+  hero_button_label: String
+  hero_image_1: String
+  hero_image_2: String
+  hero_image_3: String
+  before_after_title: String
+  before_after_pairs: [Testimonials_pageBefore_after_pairs]
+  more_title: String
+  more_panels: [Testimonials_pageMore_panels]
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input Testimonials_pageBefore_after_pairsFilter {
+  before_image: ImageFilter
+  after_image: ImageFilter
+  before_alt: StringFilter
+  after_alt: StringFilter
+}
+
+input Testimonials_pageMore_panelsFilter {
+  kind: StringFilter
+  src: StringFilter
+  poster: StringFilter
+  alt: StringFilter
+}
+
+input Testimonials_pageFilter {
+  hero_title_line_one: StringFilter
+  hero_title_highlight: StringFilter
+  hero_title_line_two: StringFilter
+  hero_title_line_three: StringFilter
+  hero_description: StringFilter
+  hero_button_label: StringFilter
+  hero_image_1: ImageFilter
+  hero_image_2: ImageFilter
+  hero_image_3: ImageFilter
+  before_after_title: StringFilter
+  before_after_pairs: Testimonials_pageBefore_after_pairsFilter
+  more_title: StringFilter
+  more_panels: Testimonials_pageMore_panelsFilter
+}
+
+type Testimonials_pageConnectionEdges {
+  cursor: String!
+  node: Testimonials_page
+}
+
+type Testimonials_pageConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [Testimonials_pageConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -327,12 +471,18 @@ type Mutation {
   createHomepage(relativePath: String!, params: HomepageMutation!): Homepage!
   updateService(relativePath: String!, params: ServiceMutation!): Service!
   createService(relativePath: String!, params: ServiceMutation!): Service!
+  updateAbout_page(relativePath: String!, params: About_pageMutation!): About_page!
+  createAbout_page(relativePath: String!, params: About_pageMutation!): About_page!
+  updateTestimonials_page(relativePath: String!, params: Testimonials_pageMutation!): Testimonials_page!
+  createTestimonials_page(relativePath: String!, params: Testimonials_pageMutation!): Testimonials_page!
 }
 
 input DocumentUpdateMutation {
   global_settings: Global_settingsMutation
   homepage: HomepageMutation
   service: ServiceMutation
+  about_page: About_pageMutation
+  testimonials_page: Testimonials_pageMutation
   relativePath: String
 }
 
@@ -340,6 +490,8 @@ input DocumentMutation {
   global_settings: Global_settingsMutation
   homepage: HomepageMutation
   service: ServiceMutation
+  about_page: About_pageMutation
+  testimonials_page: Testimonials_pageMutation
 }
 
 input Global_settingsNavigation_linksMutation {
@@ -360,7 +512,10 @@ input Global_settingsMutation {
   address: String
   navigation_links: [Global_settingsNavigation_linksMutation]
   social_links: [Global_settingsSocial_linksMutation]
+  footer_services: [String]
+  services_page_title: String
   footer_text: String
+  footer_credit: String
   cta_button_label: String
 }
 
@@ -415,6 +570,58 @@ input ServiceMutation {
   description: String
   image: String
   cta_label: String
+}
+
+input About_pageMutation {
+  hero_title_prefix: String
+  hero_title_brand: String
+  hero_title_suffix: String
+  hero_button_label: String
+  about_title: String
+  about_text: JSON
+  about_image: String
+  vision_title: String
+  vision_text: String
+  vision_image: String
+  mission_title: String
+  mission_text: String
+  mission_image: String
+  cabinet_title: String
+  cabinet_images: [String]
+  send_message_title: String
+  cta_title: String
+  cta_description: String
+  cta_button_label: String
+}
+
+input Testimonials_pageBefore_after_pairsMutation {
+  before_image: String
+  after_image: String
+  before_alt: String
+  after_alt: String
+}
+
+input Testimonials_pageMore_panelsMutation {
+  kind: String
+  src: String
+  poster: String
+  alt: String
+}
+
+input Testimonials_pageMutation {
+  hero_title_line_one: String
+  hero_title_highlight: String
+  hero_title_line_two: String
+  hero_title_line_three: String
+  hero_description: String
+  hero_button_label: String
+  hero_image_1: String
+  hero_image_2: String
+  hero_image_3: String
+  before_after_title: String
+  before_after_pairs: [Testimonials_pageBefore_after_pairsMutation]
+  more_title: String
+  more_panels: [Testimonials_pageMore_panelsMutation]
 }
 
 schema {

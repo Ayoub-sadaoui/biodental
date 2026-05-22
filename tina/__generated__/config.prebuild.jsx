@@ -106,8 +106,24 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "footer_services",
+            label: "Footer Services",
+            list: true
+          },
+          {
+            type: "string",
+            name: "services_page_title",
+            label: "Services Page Title"
+          },
+          {
+            type: "string",
             name: "footer_text",
             label: "Footer Copyright Copy"
+          },
+          {
+            type: "string",
+            name: "footer_credit",
+            label: "Footer Credit Line"
           },
           {
             type: "string",
@@ -353,6 +369,212 @@ var config_default = defineConfig({
             type: "string",
             name: "cta_label",
             label: "Learn More Link Label"
+          }
+        ]
+      },
+      {
+        name: "about_page",
+        label: "About Page",
+        path: "content/about_page",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false
+          }
+        },
+        fields: [
+          {
+            type: "string",
+            name: "hero_title_prefix",
+            label: "Hero Title Prefix"
+          },
+          {
+            type: "string",
+            name: "hero_title_brand",
+            label: "Hero Title Brand"
+          },
+          {
+            type: "string",
+            name: "hero_title_suffix",
+            label: "Hero Title Suffix"
+          },
+          {
+            type: "string",
+            name: "hero_button_label",
+            label: "Hero Button Label"
+          },
+          { type: "string", name: "about_title", label: "About Section Title" },
+          {
+            type: "rich-text",
+            name: "about_text",
+            label: "About Narrative Copy"
+          },
+          {
+            type: "image",
+            name: "about_image",
+            label: "About Section Portrait"
+          },
+          { type: "string", name: "vision_title", label: "Vision Title" },
+          { type: "string", name: "vision_text", label: "Vision Text" },
+          { type: "image", name: "vision_image", label: "Vision Image" },
+          { type: "string", name: "mission_title", label: "Mission Title" },
+          { type: "string", name: "mission_text", label: "Mission Text" },
+          { type: "image", name: "mission_image", label: "Mission Image" },
+          { type: "string", name: "cabinet_title", label: "Cabinet Title" },
+          {
+            type: "string",
+            name: "cabinet_images",
+            label: "Cabinet Images",
+            list: true
+          },
+          {
+            type: "string",
+            name: "send_message_title",
+            label: "Send Message Title"
+          },
+          { type: "string", name: "cta_title", label: "CTA Title" },
+          { type: "string", name: "cta_description", label: "CTA Description" },
+          {
+            type: "string",
+            name: "cta_button_label",
+            label: "CTA Button Label"
+          }
+        ]
+      },
+      {
+        name: "testimonials_page",
+        label: "Testimonials Page",
+        path: "content/testimonials_page",
+        format: "json",
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false
+          }
+        },
+        fields: [
+          {
+            type: "string",
+            name: "hero_title_line_one",
+            label: "Hero Title Line One"
+          },
+          {
+            type: "string",
+            name: "hero_title_highlight",
+            label: "Hero Title Highlight"
+          },
+          {
+            type: "string",
+            name: "hero_title_line_two",
+            label: "Hero Title Line Two"
+          },
+          {
+            type: "string",
+            name: "hero_title_line_three",
+            label: "Hero Title Line Three"
+          },
+          {
+            type: "string",
+            name: "hero_description",
+            label: "Hero Description"
+          },
+          {
+            type: "string",
+            name: "hero_button_label",
+            label: "Hero Button Label"
+          },
+          {
+            type: "image",
+            name: "hero_image_1",
+            label: "Hero Image 1"
+          },
+          {
+            type: "image",
+            name: "hero_image_2",
+            label: "Hero Image 2"
+          },
+          {
+            type: "image",
+            name: "hero_image_3",
+            label: "Hero Image 3"
+          },
+          {
+            type: "string",
+            name: "before_after_title",
+            label: "Before/After Section Title"
+          },
+          {
+            type: "object",
+            name: "before_after_pairs",
+            label: "Before/After Pairs",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.before_alt || "Before/After Pair" };
+              }
+            },
+            fields: [
+              {
+                type: "image",
+                name: "before_image",
+                label: "Before Image"
+              },
+              {
+                type: "image",
+                name: "after_image",
+                label: "After Image"
+              },
+              {
+                type: "string",
+                name: "before_alt",
+                label: "Before Alt Text"
+              },
+              {
+                type: "string",
+                name: "after_alt",
+                label: "After Alt Text"
+              }
+            ]
+          },
+          {
+            type: "string",
+            name: "more_title",
+            label: "More Media Section Title"
+          },
+          {
+            type: "object",
+            name: "more_panels",
+            label: "More Media Panels",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.alt || item?.kind || "Media Panel" };
+              }
+            },
+            fields: [
+              {
+                type: "string",
+                name: "kind",
+                label: "Panel Kind",
+                options: ["image", "video"]
+              },
+              {
+                type: "string",
+                name: "src",
+                label: "Source Path"
+              },
+              {
+                type: "string",
+                name: "poster",
+                label: "Video Poster Path"
+              },
+              {
+                type: "string",
+                name: "alt",
+                label: "Alt Text"
+              }
+            ]
           }
         ]
       }

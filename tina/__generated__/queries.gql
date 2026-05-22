@@ -162,3 +162,113 @@ query serviceConnection($before: String, $after: String, $first: Float, $last: F
     }
   }
 }
+
+query about_page($relativePath: String!) {
+  about_page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...About_pageParts
+  }
+}
+
+query about_pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: About_pageFilter) {
+  about_pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...About_pageParts
+      }
+    }
+  }
+}
+
+query testimonials_page($relativePath: String!) {
+  testimonials_page(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...Testimonials_pageParts
+  }
+}
+
+query testimonials_pageConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: Testimonials_pageFilter) {
+  testimonials_pageConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...Testimonials_pageParts
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { FiPhone } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FacebookLogo, InstagramLogo, TiktokLogo } from "phosphor-react";
 import { extractPlainText } from "../../../lib/cmsHelpers";
+import { getPhoneContacts } from "@/lib/siteContent";
 
 export const Footer = ({ settings }: { settings?: any }) => {
   const footerLinks =
@@ -44,28 +45,16 @@ export const Footer = ({ settings }: { settings?: any }) => {
   const footerCopy =
     extractPlainText(settings?.data?.footer_text) ||
     "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement";
+  const footerCredit =
+    settings?.data?.footer_credit || "Made by Ayoub SADAOUI";
+  const footerServices =
+    settings?.data?.footer_services?.length > 0
+      ? settings.data.footer_services
+      : ["Orthodontie", "Cosmetic", "Surgical"];
 
   // State for phone panel
   const [showPhonePanel, setShowPhonePanel] = useState(false);
-  const phoneNumbers = settings?.data?.primary_phone
-    ? [
-        {
-          number: settings.data.primary_phone,
-          href: `tel:${settings.data.primary_phone.replace(/\s/g, "")}`,
-        },
-        ...(settings.data.secondary_phone
-          ? [
-              {
-                number: settings.data.secondary_phone,
-                href: `tel:${settings.data.secondary_phone.replace(/\s/g, "")}`,
-              },
-            ]
-          : []),
-      ]
-    : [
-        { number: "07 87 90 78 32", href: "tel:0787907832" },
-        { number: "06 59 77 27 37", href: "tel:0659772737" },
-      ];
+  const phoneNumbers = getPhoneContacts(settings);
 
   return (
     <>
@@ -132,15 +121,14 @@ export const Footer = ({ settings }: { settings?: any }) => {
                   Services
                 </h3>
                 <ul className="flex flex-col gap-1 text-left">
-                  <li className="text-[16px] text-[#0F1F0D] font-[500] tracking-[-0.8px]">
-                    Orthodontie
-                  </li>
-                  <li className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px]">
-                    Cosmetic
-                  </li>
-                  <li className="text-[16px] text-[#0F1F0D] font-normal tracking-[-0.8px]">
-                    Surgical
-                  </li>
+                  {footerServices.map((service: string, index: number) => (
+                    <li
+                      key={service}
+                      className={`text-[16px] text-[#0F1F0D] ${index === 0 ? "font-[500]" : "font-normal"} tracking-[-0.8px]`}
+                    >
+                      {service}
+                    </li>
+                  ))}
                 </ul>
               </div>
 
@@ -190,8 +178,7 @@ export const Footer = ({ settings }: { settings?: any }) => {
             </div>
             <div className="flex items-center gap-2 font-normal text-right underline">
               <a href="#" className="text-[#2266ff] hover:underline">
-                Made <span className="text-black  no-underline">by</span> Ayoub
-                SADAOUI
+                {footerCredit}
               </a>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { FiPhone, FiMenu, FiX } from "react-icons/fi";
 import { IoMenu } from "react-icons/io5";
 import "@/app/globals.css";
+import { DEFAULT_PHONE_NUMBERS, getPhoneNumbers } from "@/lib/siteContent";
 const navItems = [
   { label: "Accueil", path: "/" },
   { label: "À propos", path: "/about" },
@@ -11,11 +12,9 @@ const navItems = [
   { label: "Témoignages", path: "/testimonials" },
 ];
 
-const PHONE_NUMBERS = ["07 87 90 78 32", "06 59 77 27 37"];
-
 export function PhonePopup({
   open,
-  phoneNumbers = PHONE_NUMBERS,
+  phoneNumbers = DEFAULT_PHONE_NUMBERS,
 }: {
   open: boolean;
   phoneNumbers?: string[];
@@ -29,7 +28,7 @@ export function PhonePopup({
         <a
           key={num}
           href={`tel:${num.replace(/\s/g, "")}`}
-          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === PHONE_NUMBERS.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
+          className={`flex border border-white items-center gap-2 px-6 h-1/2 text-[17px] text-[#000] font-medium ${idx === 0 ? "rounded-t-xl" : ""} ${idx === phoneNumbers.length - 1 ? "rounded-b-xl" : "border-t border-[#e0e7db]"}`}
         >
           <FiPhone className="text-[#fff]" size={18} />
           {num}
@@ -42,11 +41,7 @@ export function PhonePopup({
 export const Nav = ({ settings }: { settings?: any }) => {
   const [showPhone, setShowPhone] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const phoneNumbersList = settings?.data?.primary_phone
-    ? [settings.data.primary_phone, settings.data.secondary_phone].filter(
-        Boolean,
-      )
-    : PHONE_NUMBERS;
+  const phoneNumbersList = getPhoneNumbers(settings);
   const navigationItems = settings?.data?.navigation_links?.length
     ? settings.data.navigation_links
     : navItems;

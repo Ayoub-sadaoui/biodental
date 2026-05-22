@@ -1,9 +1,9 @@
 "use client";
 import * as React from "react";
-import { extractPlainText } from "../../../lib/cmsHelpers";
 import { ReviewCard } from "../../ui/ReviewCard";
 import "./reviews-carousel.css";
 import { motion } from "framer-motion";
+import { extractPlainText } from "../../../lib/cmsHelpers";
 
 const reviews: Array<{
   avatar: string;
@@ -51,7 +51,7 @@ export const Reviews = ({ homepage }: { homepage?: any }) => {
           avatar: review.avatar?.url || "/reviews/aimen.png",
           name: review.name || "Anonymous",
           rating: Number(review.rating || 5),
-          text: extractPlainText(review.text) || "",
+          text: extractPlainText(review.text),
           platform: review.platform || "google",
         }))
       : reviews;

@@ -4,6 +4,9 @@
   "secondary_phone": "06 59 77 27 37",
   "email": "biodental.dr.fetnaci@gmail.com",
   "address": "Annaba, Algérie",
+  "working_hours_title": "Working hours:",
+  "working_days": "Saturday – Thursday",
+  "working_hours": "9:00am to 6:00pm",
   "navigation_links": [
     {
       "label": "Accueil",
@@ -36,6 +39,9 @@
       "url": "https://www.tiktok.com/@biodental_dr.fetnaci?_t=8W1xx07WI0E&_r=1"
     }
   ],
+  "footer_services": ["Orthodontie", "Cosmetic", "Surgical"],
+  "services_page_title": "Nos services complets ..",
   "footer_text": "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement",
+  "footer_credit": "Made by Ayoub SADAOUI",
   "cta_button_label": "Prendre rendez-vous"
 }

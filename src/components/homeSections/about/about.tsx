@@ -10,10 +10,8 @@ import { extractPlainText, resolveImage } from "../../../lib/cmsHelpers";
 export const About = ({ homepage }: { homepage?: any }) => {
   const data = homepage?.data || {};
   const aboutTitle = data.about_title || "Derrière chaque sourire confiant";
+  const aboutCopy = extractPlainText(data.about_text);
   const aboutImage = resolveImage(data.about_image, "/image-7.png");
-  const aboutText =
-    extractPlainText(data.about_text) ||
-    "Chez Biodental, nous pensons que la grande dentisterie commence par l'écoute. Depuis l'obtention de mon diplôme en 2019 à Annaba, j'ai poursuivi une formation avancée en petite chirurgie, en endodontie mécanisée et en implantologie — mais ce qui définit véritablement mon travail, c'est le lien humain derrière chaque cas.";
 
   return (
     <section className="w-full py-20 bg-[#9aae92] px-8 md:px-8 lg:px-0">
@@ -42,16 +40,14 @@ export const About = ({ homepage }: { homepage?: any }) => {
 
           <Card className="w-full bg-transparent border-none shadow-none">
             <CardContent className="p-0 space-y-6 hidden md:block">
-              <div className="space-y-1">
-                <p className="text-[#f7f7f5] text-[17.3px] tracking-[0.03px] leading-[25.2px] font-[var(--font-manrope)]">
-                  {aboutText}
-                </p>
+              <div className="space-y-1 text-[#f7f7f5] text-[17.3px] tracking-[0.03px] leading-[25.2px] font-[var(--font-manrope)]">
+                {aboutCopy}
               </div>
             </CardContent>
             <CardContent className="p-0 space-y-6  block md:hidden">
-              <p className="text-[#f7f7f5] text-[16px] tracking-[0.18px] leading-[25.2px] ">
-                {aboutText}
-              </p>
+              <div className="text-[#f7f7f5] text-[16px] tracking-[0.18px] leading-[25.2px]">
+                {aboutCopy}
+              </div>
             </CardContent>
           </Card>
         </div>

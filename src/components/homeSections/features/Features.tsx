@@ -1,10 +1,10 @@
 "use client";
 import Health from "@/components/ui/animatedIcons/Health";
-import { extractPlainText } from "../../../lib/cmsHelpers";
 import { Card, CardContent } from "../../ui/card";
 import Flower2 from "@/components/ui/animatedIcons/Flower2";
 import Dentist from "@/components/ui/animatedIcons/dentist";
 import Yoga from "@/components/ui/animatedIcons/yoga";
+import { extractPlainText } from "../../../lib/cmsHelpers";
 
 export const Features = ({
   issevice,
@@ -19,21 +19,6 @@ export const Features = ({
     flower: <Flower2 />,
     dentist: <Dentist />,
     yoga: <Yoga />,
-  };
-
-  const toLines = (value: any) => {
-    if (!value) return [];
-    // If it's a rich-text AST object, extract text and split by newlines
-    if (typeof value === "object" && value.type === "root") {
-      const txt = extractPlainText(value) || "";
-      return txt.split("\n").filter(Boolean);
-    }
-    if (Array.isArray(value)) {
-      return value
-        .map((block: any) => block?.text)
-        .filter((line: string | undefined): line is string => Boolean(line));
-    }
-    return value ? [String(value)] : [];
   };
 
   const defaultCards = [
@@ -81,7 +66,7 @@ export const Features = ({
       ? data.features.map((item: any, index: number) => ({
           id: index + 1,
           title: item.title || `Feature ${index + 1}`,
-          description: toLines(item.description),
+          description: item.description,
           borderColor: item.border_color || "border-[#9aae92]",
           lottieIcon: iconMap[item.icon_key] || <Health />,
         }))
@@ -114,21 +99,8 @@ export const Features = ({
                     <h3 className="text-[#243520] text-[28px] leading-[33.6px] font-normal ">
                       {card.title}
                     </h3>
-                    <div className="flex flex-col">
-                      {Array.isArray(card.description) ? (
-                        card.description.map((line: string, i: number) => (
-                          <p
-                            key={i}
-                            className="font-normal text-[#2b3029] text-[16px] md:text-[17.3px] md:tracking-[0.18px] md:leading-[25.2px] "
-                          >
-                            {line}
-                          </p>
-                        ))
-                      ) : (
-                        <div className="font-normal text-[#2b3029] text-[16px] md:text-[17.3px] md:tracking-[0.18px] md:leading-[25.2px]">
-                          {card.description}
-                        </div>
-                      )}
+                    <div className="flex flex-col font-normal text-[#2b3029] text-[16px] md:text-[17.3px] md:tracking-[0.18px] md:leading-[25.2px]">
+                      {extractPlainText(card.description)}
                     </div>
                   </div>
                 </div>
