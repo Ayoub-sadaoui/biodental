@@ -7,7 +7,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Disable source maps in production to reduce bundle size
+  async rewrites() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/index.html',
+      },
+    ]
+  }
 };
 
 module.exports = nextConfig;
