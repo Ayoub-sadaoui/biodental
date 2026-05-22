@@ -1,12 +1,9 @@
 import React from "react";
 import HomeClient from "../components/HomeClient";
-import client from "../../tina/__generated__/client";
-import { readFile } from "fs/promises";
+import { readFile, readdir } from "fs/promises";
 import path from "path";
 
 export default async function Page() {
-  let servicesResult;
-
   try {
     const homepageFile = path.join(
       process.cwd(),
@@ -14,24 +11,26 @@ export default async function Page() {
       "homepage",
       "index.json",
     );
-    const homepageContents = await readFile(homepageFile, "utf8");
+    const servicesDir = path.join(process.cwd(), "content", "services");
+
+    const [homepageContents, serviceFiles] = await Promise.all([
+      readFile(homepageFile, "utf8"),
+      readdir(servicesDir),
+    ]);
 
     // Read the checked-in Tina content file directly so rich-text fields stay intact.
     const homepageData = JSON.parse(homepageContents);
-
-    try {
-      servicesResult = await client.queries.serviceConnection();
-    } catch (error) {
-      console.error("Failed to fetch services data from Tina CMS", error);
-      servicesResult = {
-        data: { serviceConnection: { edges: [] } },
-      };
-    }
-
-    const services =
-      servicesResult.data.serviceConnection.edges?.map((edge: any) => ({
-        data: edge?.node,
-      })) || [];
+    const sortedServiceFiles = serviceFiles
+      .filter((file) => file.endsWith(".json"))
+      .sort((a, b) => a.localeCompare(b));
+    const servicesContents = await Promise.all(
+      sortedServiceFiles.map((file) =>
+        readFile(path.join(servicesDir, file), "utf8"),
+      ),
+    );
+    const services = servicesContents.map((content) => ({
+      data: JSON.parse(content),
+    }));
 
     return (
       <HomeClient
@@ -44,35 +43,12 @@ export default async function Page() {
   } catch (error) {
     console.error("Failed to read homepage data from disk", error);
 
-    const homepageResult = {
-      query: "",
-      variables: {},
-      data: { homepage: {} },
-    };
-
-    try {
-      servicesResult = await client.queries.serviceConnection();
-    } catch (serviceError) {
-      console.error(
-        "Failed to fetch services data from Tina CMS",
-        serviceError,
-      );
-      servicesResult = {
-        data: { serviceConnection: { edges: [] } },
-      };
-    }
-
-    const services =
-      servicesResult.data.serviceConnection.edges?.map((edge: any) => ({
-        data: edge?.node,
-      })) || [];
-
     return (
       <HomeClient
-        query={homepageResult.query}
-        variables={homepageResult.variables}
-        data={homepageResult.data}
-        services={services}
+        query=""
+        variables={{}}
+        data={{ homepage: {} }}
+        services={[]}
       />
     );
   }

@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Footer } from "../components/homeSections/footer/footer";
 import { Nav } from "../components/ui/nav";
-import client from "../../tina/__generated__/client";
+import { readFile } from "fs/promises";
+import path from "path";
 import { DEFAULT_PHONE_NUMBERS } from "../lib/siteContent";
 
 export default async function RootLayout({
@@ -9,33 +10,31 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  let settingsResult;
+  let settingsData;
   try {
-    settingsResult = await client.queries.global_settings({
-      relativePath: "settings.json",
-    });
+    const settingsContents = await readFile(
+      path.join(process.cwd(), "content", "global_settings", "settings.json"),
+      "utf8",
+    );
+    settingsData = JSON.parse(settingsContents);
   } catch (error) {
-    console.error("Failed to fetch global settings from Tina", error);
-    settingsResult = {
-      data: {
-        global_settings: {
-          logo: "/logo.png",
-          primary_phone: DEFAULT_PHONE_NUMBERS[0],
-          secondary_phone: DEFAULT_PHONE_NUMBERS[1],
-          email: "biodental.dr.fetnaci@gmail.com",
-          address: "Annaba, Algérie",
-          footer_text:
-            "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement",
-          cta_button_label: "Prendre rendez-vous",
-          navigation_links: [],
-          social_links: [],
-        },
-      },
+    console.error("Failed to read global settings from disk", error);
+    settingsData = {
+      logo: "/logo.png",
+      primary_phone: DEFAULT_PHONE_NUMBERS[0],
+      secondary_phone: DEFAULT_PHONE_NUMBERS[1],
+      email: "biodental.dr.fetnaci@gmail.com",
+      address: "Annaba, Algérie",
+      footer_text:
+        "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement",
+      cta_button_label: "Prendre rendez-vous",
+      navigation_links: [],
+      social_links: [],
     };
   }
 
   const settings = {
-    data: settingsResult?.data?.global_settings || null,
+    data: settingsData || null,
   };
 
   return (
