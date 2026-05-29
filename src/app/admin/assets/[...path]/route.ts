@@ -25,11 +25,19 @@ export async function GET(
   { params }: { params: Promise<{ path: string[] }> },
 ) {
   const { path: assetPath } = await params;
-  const filePath = path.join(process.cwd(), "public", "admin", "assets", ...assetPath);
+  const filePath = path.join(
+    process.cwd(),
+    "public",
+    "admin",
+    "assets",
+    ...assetPath,
+  );
 
   try {
     const asset = await readFile(filePath);
-    const contentType = contentTypes[path.extname(filePath).toLowerCase()] ?? "application/octet-stream";
+    const contentType =
+      contentTypes[path.extname(filePath).toLowerCase()] ??
+      "application/octet-stream";
 
     return new Response(asset, {
       headers: {
