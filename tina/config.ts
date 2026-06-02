@@ -18,7 +18,7 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "uploads",
+      mediaRoot: "",
       publicFolder: "public",
     },
   },
@@ -170,24 +170,36 @@ export default defineConfig({
             label: "Hero Line Three",
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_1",
             label: "Hero Inline Image 1",
+            ui: {
+              component: "image",
+            },
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_2",
             label: "Hero Inline Image 2",
+            ui: {
+              component: "image",
+            },
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_3",
             label: "Hero Inline Image 3",
+            ui: {
+              component: "image",
+            },
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_arrow",
             label: "Hero Sparkle / Decorative Arrow",
+            ui: {
+              component: "image",
+            },
           },
           {
             type: "string",
@@ -210,9 +222,12 @@ export default defineConfig({
             label: "About Narrative Copy",
           },
           {
-            type: "image",
+            type: "string",
             name: "about_image",
             label: "About Section Portrait",
+            ui: {
+              component: "image",
+            },
           },
           {
             type: "string",
@@ -236,9 +251,12 @@ export default defineConfig({
                 label: "Card Title",
               },
               {
-                type: "rich-text",
+                type: "string",
                 name: "description",
                 label: "Card Description",
+                ui: {
+                  component: "textarea",
+                },
               },
               {
                 type: "string",
@@ -275,9 +293,12 @@ export default defineConfig({
             },
             fields: [
               {
-                type: "image",
+                type: "string",
                 name: "avatar",
                 label: "Reviewer Profile Picture",
+                ui: {
+                  component: "image",
+                },
               },
               {
                 type: "string",
@@ -290,9 +311,12 @@ export default defineConfig({
                 label: "Stars (1-5)",
               },
               {
-                type: "rich-text",
+                type: "string",
                 name: "text",
                 label: "Review Body Text",
+                ui: {
+                  component: "textarea",
+                },
               },
               {
                 type: "string",
@@ -324,9 +348,12 @@ export default defineConfig({
                 label: "Question Text",
               },
               {
-                type: "rich-text",
+                type: "string",
                 name: "answer",
                 label: "Answer Body Text",
+                ui: {
+                  component: "textarea",
+                },
               },
             ],
           },

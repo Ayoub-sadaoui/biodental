@@ -179,7 +179,7 @@ type Global_settingsConnection implements Connection {
 
 type HomepageFeatures {
   title: String
-  description: JSON
+  description: String
   icon_key: String
   border_color: String
 }
@@ -188,13 +188,13 @@ type HomepageReviews {
   avatar: String
   name: String
   rating: Float
-  text: JSON
+  text: String
   platform: String
 }
 
 type HomepageFaqs {
   question: String
-  answer: JSON
+  answer: String
 }
 
 type Homepage implements Node & Document {
@@ -234,7 +234,7 @@ input RichTextFilter {
 
 input HomepageFeaturesFilter {
   title: StringFilter
-  description: RichTextFilter
+  description: StringFilter
   icon_key: StringFilter
   border_color: StringFilter
 }
@@ -250,16 +250,16 @@ input NumberFilter {
 }
 
 input HomepageReviewsFilter {
-  avatar: ImageFilter
+  avatar: StringFilter
   name: StringFilter
   rating: NumberFilter
-  text: RichTextFilter
+  text: StringFilter
   platform: StringFilter
 }
 
 input HomepageFaqsFilter {
   question: StringFilter
-  answer: RichTextFilter
+  answer: StringFilter
 }
 
 input HomepageFilter {
@@ -267,15 +267,15 @@ input HomepageFilter {
   hero_line_one_suffix: StringFilter
   hero_line_two: StringFilter
   hero_line_three: StringFilter
-  hero_image_1: ImageFilter
-  hero_image_2: ImageFilter
-  hero_image_3: ImageFilter
-  hero_arrow: ImageFilter
+  hero_image_1: StringFilter
+  hero_image_2: StringFilter
+  hero_image_3: StringFilter
+  hero_arrow: StringFilter
   hero_button_label: StringFilter
   hero_phone_label: StringFilter
   about_title: StringFilter
   about_text: RichTextFilter
-  about_image: ImageFilter
+  about_image: StringFilter
   features_title: StringFilter
   features: HomepageFeaturesFilter
   services_title: StringFilter
@@ -521,7 +521,7 @@ input Global_settingsMutation {
 
 input HomepageFeaturesMutation {
   title: String
-  description: JSON
+  description: String
   icon_key: String
   border_color: String
 }
@@ -530,13 +530,13 @@ input HomepageReviewsMutation {
   avatar: String
   name: String
   rating: Float
-  text: JSON
+  text: String
   platform: String
 }
 
 input HomepageFaqsMutation {
   question: String
-  answer: JSON
+  answer: String
 }
 
 input HomepageMutation {

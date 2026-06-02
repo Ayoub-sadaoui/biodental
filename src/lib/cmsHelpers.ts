@@ -3,7 +3,10 @@
  */
 export function extractPlainText(value: any): string {
   if (!value) return "";
-  if (typeof value === "string") return value;
+  if (typeof value === "string") {
+    const normalized = value.replace(/^\\?\[object Object\]\s*$/i, "").trim();
+    return normalized;
+  }
 
   if (Array.isArray(value)) {
     return value.map(extractPlainText).filter(Boolean).join(" ");
