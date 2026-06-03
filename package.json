@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "if [ -n \"$NEXT_PUBLIC_TINA_CLIENT_ID\" ]; then echo 'Building TinaCMS admin...' && npx tinacms build; else echo 'Skipping TinaCMS admin build (expected locally)'; fi && next build",
     "start": "next start",
     "lint": "next lint",
     "netlify:deploy:draft": "netlify deploy --build",
