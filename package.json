@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
-    "tina:build": "npx tinacms build",
-    "build": "next build",
+    "tina:build": "NODE_OPTIONS=\"--max-old-space-size=4096\" npx tinacms build --skip-cloud-checks",
+    "build": "if [ -n \"$NEXT_PUBLIC_TINA_CLIENT_ID\" ]; then npm run tina:build; fi && next build",
     "start": "next start",
     "lint": "next lint",
     "netlify:deploy:draft": "netlify deploy --build",

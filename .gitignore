@@ -36,6 +36,8 @@ yarn-error.log*
 # vercel
 .vercel
 
+# tina cms admin build artifacts (not committed, built on deploy)
+/public/admin
 
 # typescript
 *.tsbuildinfo
