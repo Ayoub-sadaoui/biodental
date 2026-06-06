@@ -323,7 +323,7 @@ export type Global_SettingsConnection = Connection & {
 export type HomepageFeatures = {
   __typename?: 'HomepageFeatures';
   title?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['JSON']['output']>;
   icon_key?: Maybe<Scalars['String']['output']>;
   border_color?: Maybe<Scalars['String']['output']>;
 };
@@ -333,14 +333,14 @@ export type HomepageReviews = {
   avatar?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   rating?: Maybe<Scalars['Float']['output']>;
-  text?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['JSON']['output']>;
   platform?: Maybe<Scalars['String']['output']>;
 };
 
 export type HomepageFaqs = {
   __typename?: 'HomepageFaqs';
   question?: Maybe<Scalars['String']['output']>;
-  answer?: Maybe<Scalars['String']['output']>;
+  answer?: Maybe<Scalars['JSON']['output']>;
 };
 
 export type Homepage = Node & Document & {
@@ -381,7 +381,7 @@ export type RichTextFilter = {
 
 export type HomepageFeaturesFilter = {
   title?: InputMaybe<StringFilter>;
-  description?: InputMaybe<StringFilter>;
+  description?: InputMaybe<RichTextFilter>;
   icon_key?: InputMaybe<StringFilter>;
   border_color?: InputMaybe<StringFilter>;
 };
@@ -400,13 +400,13 @@ export type HomepageReviewsFilter = {
   avatar?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
-  text?: InputMaybe<StringFilter>;
+  text?: InputMaybe<RichTextFilter>;
   platform?: InputMaybe<StringFilter>;
 };
 
 export type HomepageFaqsFilter = {
   question?: InputMaybe<StringFilter>;
-  answer?: InputMaybe<StringFilter>;
+  answer?: InputMaybe<RichTextFilter>;
 };
 
 export type HomepageFilter = {
@@ -775,7 +775,7 @@ export type Global_SettingsMutation = {
 
 export type HomepageFeaturesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['JSON']['input']>;
   icon_key?: InputMaybe<Scalars['String']['input']>;
   border_color?: InputMaybe<Scalars['String']['input']>;
 };
@@ -784,13 +784,13 @@ export type HomepageReviewsMutation = {
   avatar?: InputMaybe<Scalars['String']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   rating?: InputMaybe<Scalars['Float']['input']>;
-  text?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['JSON']['input']>;
   platform?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type HomepageFaqsMutation = {
   question?: InputMaybe<Scalars['String']['input']>;
-  answer?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars['JSON']['input']>;
 };
 
 export type HomepageMutation = {
@@ -880,7 +880,7 @@ export type Testimonials_PageMutation = {
 
 export type Global_SettingsPartsFragment = { __typename: 'Global_settings', logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null, path?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null };
 
-export type HomepagePartsFragment = { __typename: 'Homepage', hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: string | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: string | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: string | null } | null> | null };
+export type HomepagePartsFragment = { __typename: 'Homepage', hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: any | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: any | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: any | null } | null> | null };
 
 export type ServicePartsFragment = { __typename: 'Service', title: string, description?: string | null, image?: string | null, cta_label?: string | null };
 
@@ -912,7 +912,7 @@ export type HomepageQueryVariables = Exact<{
 }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage: { __typename: 'Homepage', id: string, hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: string | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: string | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: string | null } | null> | null } };
+export type HomepageQuery = { __typename?: 'Query', homepage: { __typename: 'Homepage', id: string, hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: any | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: any | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: any | null } | null> | null } };
 
 export type HomepageConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -924,7 +924,7 @@ export type HomepageConnectionQueryVariables = Exact<{
 }>;
 
 
-export type HomepageConnectionQuery = { __typename?: 'Query', homepageConnection: { __typename?: 'HomepageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomepageConnectionEdges', cursor: string, node?: { __typename: 'Homepage', id: string, hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: string | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: string | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: string | null } | null> | null } | null } | null> | null } };
+export type HomepageConnectionQuery = { __typename?: 'Query', homepageConnection: { __typename?: 'HomepageConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'HomepageConnectionEdges', cursor: string, node?: { __typename: 'Homepage', id: string, hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: any | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: any | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: any | null } | null> | null } | null } | null> | null } };
 
 export type ServiceQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];

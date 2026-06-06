@@ -3,38 +3,84 @@
   "hero_line_one_suffix": "Sourire",
   "hero_line_two": "Naturel: soins doux,",
   "hero_line_three": "Priorité au Patient.",
-  "hero_image_1": "/hero1.avif",
-  "hero_image_2": "/hero2.avif",
-  "hero_image_3": "/hero3.avif",
-  "hero_arrow": "/arrow.avif",
+  "hero_image_1": "/uploads/hero1.avif",
+  "hero_image_2": "/uploads/hero2.avif",
+  "hero_image_3": "/uploads/hero3.avif",
+  "hero_arrow": "/uploads/arrow.avif",
   "hero_button_label": "Prendre rendez-vous",
   "hero_phone_label": "Call us",
   "about_title": "Derrière chaque sourire confiant",
   "about_text": "Chez **BioDental**, nous croyons qu'une excellente dentisterie commence par l'écoute.\n\nJe suis **Dr.Fetnaci Sofian** — un dentiste animé par une philosophie simple :\n\nplacer l'humain avant les procédures, et toujours viser un résultat naturel et durable.\n\nDiplômé en 2019 d'Annaba, j'ai suivi une formation avancée en petite chirurgie, endodontie mécanisée et implantologie — mais ce qui définit vraiment mon travail, c'est le lien humain derrière chaque patient.\n",
-  "about_image": "/image-7.png",
+  "about_image": "/uploads/image-7.png",
   "features_title": "Pourquoi choisir Ayoub?",
   "features": [
     {
       "title": "Priorité au patient.",
-      "description": "BioDental : Votre bien-être avant tout.\n\nTraitements personnalisés, pas commerciaux.\n",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "BioDental : Votre bien-être avant tout." }
+            ]
+          },
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Traitements personnalisés, pas commerciaux." }
+            ]
+          }
+        ]
+      },
       "icon_key": "health",
       "border_color": "border-[#9aae92]"
     },
     {
       "title": "Dentisterie naturelle",
-      "description": "Nous utilisons des matériaux et des techniques biocompatibles qui s'alignent avec les processus naturels.\n",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Nous utilisons des matériaux et des techniques biocompatibles qui s'alignent avec les processus naturels." }
+            ]
+          }
+        ]
+      },
       "icon_key": "flower",
       "border_color": "border-[#243520]"
     },
     {
       "title": "Technologie avancée",
-      "description": "Nous utilisons une technologie dentaire de pointe pour fournir des traitements précis et efficaces.\n",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Nous utilisons une technologie dentaire de pointe pour fournir des traitements précis et efficaces." }
+            ]
+          }
+        ]
+      },
       "icon_key": "dentist",
       "border_color": "border-[#9aae92]"
     },
     {
       "title": "Dentisterie sans anxiété",
-      "description": "Votre bien-être prime sur les intérêts commerciaux, garantissant des traitements adaptés à vos besoins.\n",
+      "description": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Votre bien-être prime sur les intérêts commerciaux, garantissant des traitements adaptés à vos besoins." }
+            ]
+          }
+        ]
+      },
       "icon_key": "yoga",
       "border_color": "border-[#9aae92]"
     }
@@ -43,31 +89,71 @@
   "reviews_title": "Votre confiance, selon leurs mots...",
   "reviews": [
     {
-      "avatar": "/reviews/aimen.png",
+      "avatar": "/uploads/reviews/aimen.png",
       "name": "Amira badraoui",
       "rating": 5,
-      "text": "Un accueil chaleureux w khedma machallah.\n",
+      "text": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Un accueil chaleureux w khedma machallah." }
+            ]
+          }
+        ]
+      },
       "platform": "google"
     },
     {
-      "avatar": "/reviews/amin.png",
+      "avatar": "/uploads/reviews/amin.png",
       "name": "amine ghachi",
       "rating": 5,
-      "text": "Bravos docteur Ya3tik Saha 🔥👌😷\n",
+      "text": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Bravos docteur Ya3tik Saha 🔥👌😷" }
+            ]
+          }
+        ]
+      },
       "platform": "instagram"
     },
     {
-      "avatar": "/reviews/aimen.png",
+      "avatar": "/uploads/reviews/aimen.png",
       "name": "Amira badraoui",
       "rating": 5,
-      "text": "Vraiment un beau travail, vous êtes le meilleur.\n",
+      "text": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Vraiment un beau travail, vous êtes le meilleur." }
+            ]
+          }
+        ]
+      },
       "platform": "facebook"
     },
     {
-      "avatar": "/reviews/image.png",
+      "avatar": "/uploads/reviews/image.png",
       "name": "soukri houri",
       "rating": 5,
-      "text": "Vraiment merci khedma mashallah.\n",
+      "text": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Vraiment merci khedma mashallah." }
+            ]
+          }
+        ]
+      },
       "platform": "instagram"
     }
   ],
@@ -75,15 +161,45 @@
   "faqs": [
     {
       "question": "What is the cost of a dental bridge in Algeria?",
-      "answer": "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation.\n"
+      "answer": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation." }
+            ]
+          }
+        ]
+      }
     },
     {
       "question": "How often should I see my dentist during orthodontic treatment?",
-      "answer": "It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners.\n"
+      "answer": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners." }
+            ]
+          }
+        ]
+      }
     },
     {
       "question": "Which dental braces are right for me?",
-      "answer": "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile.\n"
+      "answer": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              { "type": "text", "text": "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile." }
+            ]
+          }
+        ]
+      }
     }
   ],
   "cta_title": "Prêt à transformer votre sourire?",

@@ -18,9 +18,12 @@ export default defineConfig({
   },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "uploads",
       publicFolder: "public",
     },
+  },
+  ui: {
+    previewUrl: () => ({ url: "https://biodentalll.netlify.app" }),
   },
   // See https://tina.io/docs/schema/ for more information
   schema: {
@@ -251,12 +254,9 @@ export default defineConfig({
                 label: "Card Title",
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "description",
                 label: "Card Description",
-                ui: {
-                  component: "textarea",
-                },
               },
               {
                 type: "string",
@@ -311,12 +311,9 @@ export default defineConfig({
                 label: "Stars (1-5)",
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "text",
                 label: "Review Body Text",
-                ui: {
-                  component: "textarea",
-                },
               },
               {
                 type: "string",
@@ -348,12 +345,9 @@ export default defineConfig({
                 label: "Question Text",
               },
               {
-                type: "string",
+                type: "rich-text",
                 name: "answer",
                 label: "Answer Body Text",
-                ui: {
-                  component: "textarea",
-                },
               },
             ],
           },

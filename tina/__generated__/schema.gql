@@ -179,7 +179,7 @@ type Global_settingsConnection implements Connection {
 
 type HomepageFeatures {
   title: String
-  description: String
+  description: JSON
   icon_key: String
   border_color: String
 }
@@ -188,13 +188,13 @@ type HomepageReviews {
   avatar: String
   name: String
   rating: Float
-  text: String
+  text: JSON
   platform: String
 }
 
 type HomepageFaqs {
   question: String
-  answer: String
+  answer: JSON
 }
 
 type Homepage implements Node & Document {
@@ -234,7 +234,7 @@ input RichTextFilter {
 
 input HomepageFeaturesFilter {
   title: StringFilter
-  description: StringFilter
+  description: RichTextFilter
   icon_key: StringFilter
   border_color: StringFilter
 }
@@ -253,13 +253,13 @@ input HomepageReviewsFilter {
   avatar: StringFilter
   name: StringFilter
   rating: NumberFilter
-  text: StringFilter
+  text: RichTextFilter
   platform: StringFilter
 }
 
 input HomepageFaqsFilter {
   question: StringFilter
-  answer: StringFilter
+  answer: RichTextFilter
 }
 
 input HomepageFilter {
@@ -521,7 +521,7 @@ input Global_settingsMutation {
 
 input HomepageFeaturesMutation {
   title: String
-  description: String
+  description: JSON
   icon_key: String
   border_color: String
 }
@@ -530,13 +530,13 @@ input HomepageReviewsMutation {
   avatar: String
   name: String
   rating: Float
-  text: String
+  text: JSON
   platform: String
 }
 
 input HomepageFaqsMutation {
   question: String
-  answer: String
+  answer: JSON
 }
 
 input HomepageMutation {
