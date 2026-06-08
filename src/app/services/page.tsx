@@ -1,47 +1,56 @@
-import { CTA } from "@/components/homeSections/CTA/CTA";
-import { Nav } from "@/components/ui/nav";
-import { Footer } from "@/components/homeSections/footer";
-import ServicesSec from "@/components/ServicesSections/ServicesSec";
-import { Features } from "@/components/homeSections/features/Features";
-import { readFile, readdir } from "fs/promises";
-import path from "path";
+import ServicesClient from "../../components/ServicesClient";
+import client from "../../../tina/__generated__/client";
 
-export default async function Services() {
-  const servicesDir = path.join(process.cwd(), "content", "services");
+const SERVICE_FILES = [
+  "chirurgie.json",
+  "esthetique.json",
+  "implants.json",
+  "orthodontie.json",
+  "preservation.json",
+  "protheses.json",
+];
 
-  const [homepageContents, settingsContents, serviceFiles] = await Promise.all([
-    readFile(
-      path.join(process.cwd(), "content", "homepage", "index.json"),
-      "utf8",
-    ),
-    readFile(
-      path.join(process.cwd(), "content", "global_settings", "settings.json"),
-      "utf8",
-    ),
-    readdir(servicesDir),
-  ]);
-
-  const homepageData = JSON.parse(homepageContents);
-  const settingsData = JSON.parse(settingsContents);
-  const sortedServiceFiles = serviceFiles
-    .filter((file) => file.endsWith(".json"))
-    .sort((a, b) => a.localeCompare(b));
-  const servicesContents = await Promise.all(
-    sortedServiceFiles.map((file) =>
-      readFile(path.join(servicesDir, file), "utf8"),
+async function fetchAllServices() {
+  const results = await Promise.all(
+    SERVICE_FILES.map((file) =>
+      client.queries.service({ relativePath: file }),
     ),
   );
-  const services = servicesContents.map((content) => ({
-    data: JSON.parse(content),
-  }));
+  return {
+    items: results.map((r) => ({ data: r.data.service })),
+    queries: results.map((r) => ({
+      query: r.query,
+      variables: r.variables,
+      data: r.data,
+    })),
+  };
+}
 
-  return (
-    <div className="relative w-full bg-[#9aae92] ">
-      <Nav settings={{ data: settingsData }} />
-      <Features issevice={true} homepage={{ data: homepageData }} />
-      <ServicesSec services={services} settings={{ data: settingsData }} />
-      <CTA homepage={{ data: homepageData }} />
-      <Footer settings={{ data: settingsData }} />
-    </div>
-  );
+export default async function ServicesPage() {
+  try {
+    const [homepageRes, settingsRes, servicesData] = await Promise.all([
+      client.queries.homepage({ relativePath: "index.json" }),
+      client.queries.global_settings({ relativePath: "settings.json" }),
+      fetchAllServices(),
+    ]);
+
+    return (
+      <ServicesClient
+        homepageData={homepageRes.data}
+        settings={settingsRes.data}
+        services={servicesData.items}
+        serviceQueries={servicesData.queries}
+      />
+    );
+  } catch (error) {
+    console.error("Failed to fetch services data", error);
+    return (
+      <ServicesClient
+        homepageData={{}}
+        settings={null}
+        services={[]}
+        serviceQueries={[]}
+      />
+    );
+  }
 }

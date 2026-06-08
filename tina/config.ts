@@ -23,7 +23,7 @@ export default defineConfig({
     },
   },
   ui: {
-    previewUrl: () => ({ url: "https://biodentalll.netlify.app" }),
+    previewUrl: () => ({ url: "http://localhost:3000" }),
   },
   // See https://tina.io/docs/schema/ for more information
   schema: {
@@ -150,6 +150,9 @@ export default defineConfig({
             create: false,
             delete: false,
           },
+          router: ({ document }) => {
+            return "/";
+          },
         },
         fields: [
           {
@@ -173,36 +176,24 @@ export default defineConfig({
             label: "Hero Line Three",
           },
           {
-            type: "string",
+            type: "image",
             name: "hero_image_1",
             label: "Hero Inline Image 1",
-            ui: {
-              component: "image",
-            },
           },
           {
-            type: "string",
+            type: "image",
             name: "hero_image_2",
             label: "Hero Inline Image 2",
-            ui: {
-              component: "image",
-            },
           },
           {
-            type: "string",
+            type: "image",
             name: "hero_image_3",
             label: "Hero Inline Image 3",
-            ui: {
-              component: "image",
-            },
           },
           {
-            type: "string",
+            type: "image",
             name: "hero_arrow",
             label: "Hero Sparkle / Decorative Arrow",
-            ui: {
-              component: "image",
-            },
           },
           {
             type: "string",
@@ -225,12 +216,9 @@ export default defineConfig({
             label: "About Narrative Copy",
           },
           {
-            type: "string",
+            type: "image",
             name: "about_image",
             label: "About Section Portrait",
-            ui: {
-              component: "image",
-            },
           },
           {
             type: "string",
@@ -293,12 +281,9 @@ export default defineConfig({
             },
             fields: [
               {
-                type: "string",
+                type: "image",
                 name: "avatar",
                 label: "Reviewer Profile Picture",
-                ui: {
-                  component: "image",
-                },
               },
               {
                 type: "string",
@@ -373,6 +358,11 @@ export default defineConfig({
         label: "Services Offered",
         path: "content/services",
         format: "json",
+        ui: {
+          router: ({ document }) => {
+            return "/services";
+          },
+        },
         fields: [
           {
             type: "string",
@@ -407,6 +397,9 @@ export default defineConfig({
           allowedActions: {
             create: false,
             delete: false,
+          },
+          router: ({ document }) => {
+            return "/about";
           },
         },
         fields: [
@@ -477,6 +470,9 @@ export default defineConfig({
           allowedActions: {
             create: false,
             delete: false,
+          },
+          router: ({ document }) => {
+            return "/testimonials";
           },
         },
         fields: [

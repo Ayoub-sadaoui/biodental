@@ -1,49 +1,33 @@
-import { Footer } from "../../components/homeSections/footer/footer";
-import { Nav } from "../../components/ui/nav";
-import { Reviews } from "@/components/homeSections/reviews/page";
-
-import {
-  TestimonialHeroSection,
-  GallerySection,
-  MoreImagesSection,
-} from "../../components/testimonialSections";
-import { CTA } from "../../components/homeSections/CTA/CTA";
-
-import { readFile } from "fs/promises";
-import path from "path";
+import TestimonialsClient from "../../components/TestimonialsClient";
+import client from "../../../tina/__generated__/client";
 
 export default async function TestimonialsPage() {
-  const [homepageContents, settingsContents] = await Promise.all([
-    readFile(
-      path.join(process.cwd(), "content", "homepage", "index.json"),
-      "utf8",
-    ),
-    readFile(
-      path.join(process.cwd(), "content", "global_settings", "settings.json"),
-      "utf8",
-    ),
-  ]);
+  try {
+    const [homepageRes, settingsRes, testimonialsRes] = await Promise.all([
+      client.queries.homepage({ relativePath: "index.json" }),
+      client.queries.global_settings({ relativePath: "settings.json" }),
+      client.queries.testimonials_page({ relativePath: "index.json" }),
+    ]);
 
-  const homepageData = JSON.parse(homepageContents);
-  const settingsData = JSON.parse(settingsContents);
-  const testimonialsPageContents = await readFile(
-    path.join(process.cwd(), "content", "testimonials_page", "index.json"),
-    "utf8",
-  );
-  const testimonialsPageData = JSON.parse(testimonialsPageContents);
-
-  return (
-    <div className="relative w-full bg-[#F7F7F5]">
-      <Nav settings={{ data: settingsData }} />
-      <TestimonialHeroSection
-        settings={{ data: settingsData }}
-        pageContent={testimonialsPageData}
+    return (
+      <TestimonialsClient
+        query={testimonialsRes.query}
+        variables={testimonialsRes.variables}
+        data={testimonialsRes.data}
+        homepage={homepageRes.data}
+        settings={settingsRes.data}
       />
-      <Reviews homepage={{ data: homepageData }} />
-      <GallerySection pageContent={testimonialsPageData} />
-      <MoreImagesSection pageContent={testimonialsPageData} />
-      <CTA homepage={{ data: homepageData }} />
-      <Footer settings={{ data: settingsData }} />
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error("Failed to fetch testimonials data", error);
+    return (
+      <TestimonialsClient
+        query=""
+        variables={{}}
+        data={{}}
+        homepage={null}
+        settings={null}
+      />
+    );
+  }
 }

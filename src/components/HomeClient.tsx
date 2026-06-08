@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useTina } from "tinacms/dist/react";
 import { Hero } from "./homeSections/hero/hero";
 import { About } from "./homeSections/about/about";
 import { Features } from "./homeSections/features/Features";
@@ -17,31 +18,30 @@ type HomeClientProps = {
 };
 
 export default function HomeClient(props: HomeClientProps) {
+  const { data } = useTina({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
+
   const homepage = {
-    data: props.data?.homepage || {},
+    data: data?.homepage || {},
   };
 
   return (
     <div className="w-full bg-[#F7F7F5]">
       <div className="relative">
         <div className="w-full bg-[#F7F7F5] overflow-hidden">
-          {/* Header Section */}
           <div className="w-full">
             <Hero homepage={homepage} />
           </div>
-          {/* About Section */}
           <About homepage={homepage} />
-          {/* Features Section */}
           <Features homepage={homepage} />
-          {/* Services Section */}
           <Services homepage={homepage} services={props.services} />
-          {/* Reviews Section */}
           <Reviews homepage={homepage} />
-          {/* FAQ Section */}
           <FAQ homepage={homepage} />
         </div>
       </div>
-      {/* CTA Section */}
       <CTA homepage={homepage} />
     </div>
   );

@@ -12,75 +12,29 @@
   "about_title": "Derrière chaque sourire confiant",
   "about_text": "Chez **BioDental**, nous croyons qu'une excellente dentisterie commence par l'écoute.\n\nJe suis **Dr.Fetnaci Sofian** — un dentiste animé par une philosophie simple :\n\nplacer l'humain avant les procédures, et toujours viser un résultat naturel et durable.\n\nDiplômé en 2019 d'Annaba, j'ai suivi une formation avancée en petite chirurgie, endodontie mécanisée et implantologie — mais ce qui définit vraiment mon travail, c'est le lien humain derrière chaque patient.\n",
   "about_image": "/uploads/image-7.png",
-  "features_title": "Pourquoi choisir Ayoub?",
+  "features_title": "Pourquoi choisir Biodental?",
   "features": [
     {
       "title": "Priorité au patient.",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "BioDental : Votre bien-être avant tout." }
-            ]
-          },
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Traitements personnalisés, pas commerciaux." }
-            ]
-          }
-        ]
-      },
+      "description": "BioDental : Votre bien-être avant tout.\n\nTraitements personnalisés, pas commerciaux.",
       "icon_key": "health",
       "border_color": "border-[#9aae92]"
     },
     {
       "title": "Dentisterie naturelle",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Nous utilisons des matériaux et des techniques biocompatibles qui s'alignent avec les processus naturels." }
-            ]
-          }
-        ]
-      },
+      "description": "Nous utilisons des matériaux et des techniques biocompatibles qui s'alignent avec les processus naturels du corps pour des soins respectueux et efficaces.",
       "icon_key": "flower",
       "border_color": "border-[#243520]"
     },
     {
       "title": "Technologie avancée",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Nous utilisons une technologie dentaire de pointe pour fournir des traitements précis et efficaces." }
-            ]
-          }
-        ]
-      },
+      "description": "Nous utilisons une technologie dentaire de pointe pour fournir des traitements précis et efficaces.",
       "icon_key": "dentist",
       "border_color": "border-[#9aae92]"
     },
     {
       "title": "Dentisterie sans anxiété",
-      "description": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Votre bien-être prime sur les intérêts commerciaux, garantissant des traitements adaptés à vos besoins." }
-            ]
-          }
-        ]
-      },
+      "description": "Votre bien-être prime sur les intérêts commerciaux, garantissant des traitements adaptés à vos besoins spécifiques.",
       "icon_key": "yoga",
       "border_color": "border-[#9aae92]"
     }
@@ -92,68 +46,28 @@
       "avatar": "/uploads/reviews/aimen.png",
       "name": "Amira badraoui",
       "rating": 5,
-      "text": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Un accueil chaleureux w khedma machallah." }
-            ]
-          }
-        ]
-      },
+      "text": "Un accueil chaleureux w khedma machallah.",
       "platform": "google"
     },
     {
       "avatar": "/uploads/reviews/amin.png",
       "name": "amine ghachi",
       "rating": 5,
-      "text": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Bravos docteur Ya3tik Saha 🔥👌😷" }
-            ]
-          }
-        ]
-      },
+      "text": "Bravos docteur Ya3tik Saha 🔥👌😷",
       "platform": "instagram"
     },
     {
       "avatar": "/uploads/reviews/aimen.png",
       "name": "Amira badraoui",
       "rating": 5,
-      "text": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Vraiment un beau travail, vous êtes le meilleur." }
-            ]
-          }
-        ]
-      },
+      "text": "Vraiment un beau travail, vous êtes le meilleur.",
       "platform": "facebook"
     },
     {
       "avatar": "/uploads/reviews/image.png",
       "name": "soukri houri",
       "rating": 5,
-      "text": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Vraiment merci khedma mashallah." }
-            ]
-          }
-        ]
-      },
+      "text": "Vraiment merci khedma mashallah.",
       "platform": "instagram"
     }
   ],
@@ -161,45 +75,15 @@
   "faqs": [
     {
       "question": "What is the cost of a dental bridge in Algeria?",
-      "answer": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation." }
-            ]
-          }
-        ]
-      }
+      "answer": "Prices range from 20,000 DZD to 80,000 DZD, depending on materials and the number of missing teeth. At BioDental, we offer biocompatible bridges with clear pricing after a first consultation."
     },
     {
       "question": "How often should I see my dentist during orthodontic treatment?",
-      "answer": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners." }
-            ]
-          }
-        ]
-      }
+      "answer": "It is important to continue to see your dentist for regular check-ups and cleanings during orthodontic treatment. Your dentist can help monitor your oral health and ensure that your teeth and gums remain healthy during treatment. They can also provide advice on how to properly care for your teeth and braces or aligners."
     },
     {
       "question": "Which dental braces are right for me?",
-      "answer": {
-        "type": "root",
-        "children": [
-          {
-            "type": "p",
-            "children": [
-              { "type": "text", "text": "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile." }
-            ]
-          }
-        ]
-      }
+      "answer": "It depends on your age, goals, and budget. BioDental offers a full scan and custom treatment plan to recommend the most suitable braces for your smile."
     }
   ],
   "cta_title": "Prêt à transformer votre sourire?",

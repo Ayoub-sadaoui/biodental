@@ -250,7 +250,7 @@ input NumberFilter {
 }
 
 input HomepageReviewsFilter {
-  avatar: StringFilter
+  avatar: ImageFilter
   name: StringFilter
   rating: NumberFilter
   text: RichTextFilter
@@ -267,15 +267,15 @@ input HomepageFilter {
   hero_line_one_suffix: StringFilter
   hero_line_two: StringFilter
   hero_line_three: StringFilter
-  hero_image_1: StringFilter
-  hero_image_2: StringFilter
-  hero_image_3: StringFilter
-  hero_arrow: StringFilter
+  hero_image_1: ImageFilter
+  hero_image_2: ImageFilter
+  hero_image_3: ImageFilter
+  hero_arrow: ImageFilter
   hero_button_label: StringFilter
   hero_phone_label: StringFilter
   about_title: StringFilter
   about_text: RichTextFilter
-  about_image: StringFilter
+  about_image: ImageFilter
   features_title: StringFilter
   features: HomepageFeaturesFilter
   services_title: StringFilter

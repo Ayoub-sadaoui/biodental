@@ -397,7 +397,7 @@ export type NumberFilter = {
 };
 
 export type HomepageReviewsFilter = {
-  avatar?: InputMaybe<StringFilter>;
+  avatar?: InputMaybe<ImageFilter>;
   name?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   text?: InputMaybe<RichTextFilter>;
@@ -414,15 +414,15 @@ export type HomepageFilter = {
   hero_line_one_suffix?: InputMaybe<StringFilter>;
   hero_line_two?: InputMaybe<StringFilter>;
   hero_line_three?: InputMaybe<StringFilter>;
-  hero_image_1?: InputMaybe<StringFilter>;
-  hero_image_2?: InputMaybe<StringFilter>;
-  hero_image_3?: InputMaybe<StringFilter>;
-  hero_arrow?: InputMaybe<StringFilter>;
+  hero_image_1?: InputMaybe<ImageFilter>;
+  hero_image_2?: InputMaybe<ImageFilter>;
+  hero_image_3?: InputMaybe<ImageFilter>;
+  hero_arrow?: InputMaybe<ImageFilter>;
   hero_button_label?: InputMaybe<StringFilter>;
   hero_phone_label?: InputMaybe<StringFilter>;
   about_title?: InputMaybe<StringFilter>;
   about_text?: InputMaybe<RichTextFilter>;
-  about_image?: InputMaybe<StringFilter>;
+  about_image?: InputMaybe<ImageFilter>;
   features_title?: InputMaybe<StringFilter>;
   features?: InputMaybe<HomepageFeaturesFilter>;
   services_title?: InputMaybe<StringFilter>;
@@ -1481,7 +1481,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/2.4/content/dummy-client-id/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )

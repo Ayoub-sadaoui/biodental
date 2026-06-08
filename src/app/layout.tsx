@@ -1,8 +1,7 @@
 import "./globals.css";
 import { Footer } from "../components/homeSections/footer/footer";
 import { Nav } from "../components/ui/nav";
-import { readFile } from "fs/promises";
-import path from "path";
+import client from "../../tina/__generated__/client";
 import { DEFAULT_PHONE_NUMBERS } from "../lib/siteContent";
 
 export default async function RootLayout({
@@ -12,13 +11,12 @@ export default async function RootLayout({
 }>) {
   let settingsData;
   try {
-    const settingsContents = await readFile(
-      path.join(process.cwd(), "content", "global_settings", "settings.json"),
-      "utf8",
-    );
-    settingsData = JSON.parse(settingsContents);
+    const settingsRes = await client.queries.global_settings({
+      relativePath: "settings.json",
+    });
+    settingsData = settingsRes.data.global_settings;
   } catch (error) {
-    console.error("Failed to read global settings from disk", error);
+    console.error("Failed to fetch global settings", error);
     settingsData = {
       logo: "/logo.png",
       primary_phone: DEFAULT_PHONE_NUMBERS[0],
