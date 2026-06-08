@@ -23,7 +23,9 @@ export default defineConfig({
     },
   },
   ui: {
-    previewUrl: () => ({ url: "http://localhost:3000" }),
+    previewUrl: () => ({
+      url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    }),
   },
   // See https://tina.io/docs/schema/ for more information
   schema: {
