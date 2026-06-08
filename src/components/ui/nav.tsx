@@ -57,7 +57,7 @@ export const Nav = ({ settings }: { settings?: any }) => {
                   src={
                     typeof settings?.data?.logo === "string"
                       ? settings.data.logo
-                      : settings?.data?.logo?.url || "./logo.png"
+                      : settings?.data?.logo?.url || "/uploads/logo.png"
                   }
                   alt="BioDental"
                   className=" w-[180px]"
@@ -113,7 +113,7 @@ export const Nav = ({ settings }: { settings?: any }) => {
                   src={
                     typeof settings?.data?.logo === "string"
                       ? settings.data.logo
-                      : settings?.data?.logo?.url || "./logo.webp"
+                      : settings?.data?.logo?.url || "/uploads/logo.png"
                   }
                   alt="BioDental"
                 />

@@ -5,12 +5,12 @@ const OurHome = ({ pageContent }: { pageContent?: any }) => {
   const visionText =
     pageContent?.vision_text ||
     "Redéfinir la dentisterie comme une expérience sereine et humaine — où les patients se sentent sincèrement pris en charge, confiants dans leur sourire et connectés à une forme plus naturelle de santé et de beauté.";
-  const visionImage = pageContent?.vision_image || "/ourhome/home1.png";
+  const visionImage = pageContent?.vision_image || "/uploads/ourhome/home1.png";
   const missionTitle = pageContent?.mission_title || "Notre mission";
   const missionText =
     pageContent?.mission_text ||
     "Offrir des soins dentaires précis et naturels, entièrement axés sur la santé et le confort de nos patients — alliant expertise moderne, empathie et simplicité esthétique.";
-  const missionImage = pageContent?.mission_image || "/ourhome/home2.png";
+  const missionImage = pageContent?.mission_image || "/uploads/ourhome/home2.png";
 
   return (
     <section className="w-full px-[20px] md:px-0 py-20 bg-[#9aae92]">

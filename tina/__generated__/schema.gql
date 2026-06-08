@@ -127,13 +127,6 @@ type Global_settings implements Node & Document {
   _values: JSON!
 }
 
-input ImageFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
 input StringFilter {
   startsWith: String
   eq: String
@@ -152,7 +145,7 @@ input Global_settingsSocial_linksFilter {
 }
 
 input Global_settingsFilter {
-  logo: ImageFilter
+  logo: StringFilter
   primary_phone: StringFilter
   secondary_phone: StringFilter
   email: StringFilter
@@ -250,7 +243,7 @@ input NumberFilter {
 }
 
 input HomepageReviewsFilter {
-  avatar: ImageFilter
+  avatar: StringFilter
   name: StringFilter
   rating: NumberFilter
   text: RichTextFilter
@@ -267,15 +260,15 @@ input HomepageFilter {
   hero_line_one_suffix: StringFilter
   hero_line_two: StringFilter
   hero_line_three: StringFilter
-  hero_image_1: ImageFilter
-  hero_image_2: ImageFilter
-  hero_image_3: ImageFilter
-  hero_arrow: ImageFilter
+  hero_image_1: StringFilter
+  hero_image_2: StringFilter
+  hero_image_3: StringFilter
+  hero_arrow: StringFilter
   hero_button_label: StringFilter
   hero_phone_label: StringFilter
   about_title: StringFilter
   about_text: RichTextFilter
-  about_image: ImageFilter
+  about_image: StringFilter
   features_title: StringFilter
   features: HomepageFeaturesFilter
   services_title: StringFilter
@@ -312,7 +305,7 @@ type Service implements Node & Document {
 input ServiceFilter {
   title: StringFilter
   description: StringFilter
-  image: ImageFilter
+  image: StringFilter
   cta_label: StringFilter
 }
 
@@ -359,15 +352,15 @@ input About_pageFilter {
   hero_button_label: StringFilter
   about_title: StringFilter
   about_text: RichTextFilter
-  about_image: ImageFilter
+  about_image: StringFilter
   vision_title: StringFilter
   vision_text: StringFilter
-  vision_image: ImageFilter
+  vision_image: StringFilter
   mission_title: StringFilter
   mission_text: StringFilter
-  mission_image: ImageFilter
+  mission_image: StringFilter
   cabinet_title: StringFilter
-  cabinet_images: ImageFilter
+  cabinet_images: StringFilter
   send_message_title: StringFilter
   cta_title: StringFilter
   cta_description: StringFilter
@@ -419,8 +412,8 @@ type Testimonials_page implements Node & Document {
 }
 
 input Testimonials_pageBefore_after_pairsFilter {
-  before_image: ImageFilter
-  after_image: ImageFilter
+  before_image: StringFilter
+  after_image: StringFilter
   before_alt: StringFilter
   after_alt: StringFilter
 }
@@ -439,9 +432,9 @@ input Testimonials_pageFilter {
   hero_title_line_three: StringFilter
   hero_description: StringFilter
   hero_button_label: StringFilter
-  hero_image_1: ImageFilter
-  hero_image_2: ImageFilter
-  hero_image_3: ImageFilter
+  hero_image_1: StringFilter
+  hero_image_2: StringFilter
+  hero_image_3: StringFilter
   before_after_title: StringFilter
   before_after_pairs: Testimonials_pageBefore_after_pairsFilter
   more_title: StringFilter

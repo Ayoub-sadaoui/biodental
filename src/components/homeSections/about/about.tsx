@@ -11,7 +11,7 @@ export const About = ({ homepage }: { homepage?: any }) => {
   const data = homepage?.data || {};
   const aboutTitle = data.about_title || "Derrière chaque sourire confiant";
   const aboutCopy = extractPlainText(data.about_text);
-  const aboutImage = resolveImage(data.about_image, "/image-7.png");
+  const aboutImage = resolveImage(data.about_image, "/uploads/image-7.png");
 
   return (
     <section className="w-full py-20 bg-[#9aae92] px-8 md:px-8 lg:px-0">

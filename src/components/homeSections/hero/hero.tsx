@@ -17,11 +17,11 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
   const heroLineThree = data.hero_line_three || "Priorité au Patient.";
   const heroButtonLabel = data.hero_button_label || "Prendre rendez-vous";
 
-  const heroImage1 = resolveImage(data.hero_image_1, "/hero1.avif");
-  const heroImage2 = resolveImage(data.hero_image_2, "/hero2.avif");
-  const heroImage3 = resolveImage(data.hero_image_3, "/hero3.avif");
-  const heroArrow = resolveImage(data.hero_arrow, "/arrow.avif");
-  const heroNedjm = resolveImage(data.hero_arrow, "/nedjm.avif");
+  const heroImage1 = resolveImage(data.hero_image_1, "/uploads/hero1.avif");
+  const heroImage2 = resolveImage(data.hero_image_2, "/uploads/hero2.avif");
+  const heroImage3 = resolveImage(data.hero_image_3, "/uploads/hero3.avif");
+  const heroArrow = resolveImage(data.hero_arrow, "/uploads/arrow.avif");
+  const heroNedjm = resolveImage(data.hero_arrow, "/uploads/nedjm.avif");
 
   return (
     <section className="relative w-full min-h-[700px] flex flex-col items-center justify-center bg-[#f7f7f5] pt-[50px] md:pt-24 pb-12">
@@ -61,7 +61,7 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
           <h1 className="h-[80px] relative flex text-[70px]">
             <span className="absolute top-0 -left- mr-1 rotate-[-32deg]">
               <img
-                src="/leaf.avif"
+                src="/uploads/leaf.avif"
                 alt="leaf"
                 className="inline h-[38px] w-[48px] align-top"
               />
@@ -185,7 +185,7 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
           </span>
           <span className="inline-block align-top ml-1 -mt-3 absolute top-[11px] right-[-9px]">
             <img
-              src="/leaf.avif"
+              src="/uploads/leaf.avif"
               alt="leaf"
               className="inline h-[24px] w-[24px] align-top rotate-[35deg]"
             />

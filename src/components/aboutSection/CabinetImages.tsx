@@ -1,16 +1,16 @@
 import Image from "next/image";
 const fallbackImages = [
-  "/cabinet/cabinet1.png",
-  "/cabinet/cabinet2.png",
-  "/cabinet/cabinet3.png",
-  "/cabinet/cabinet4.png",
-  "/cabinet/cabinet5.png",
-  "/cabinet/cabinet6.png",
-  "/cabinet/cabinet7.png",
-  "/cabinet/cabinet8.png",
-  "/cabinet/cabinet9.png",
-  "/cabinet/cabinet10.png",
-  "/cabinet/cabinet11.png",
+  "/uploads/cabinet/cabinet1.png",
+  "/uploads/cabinet/cabinet2.png",
+  "/uploads/cabinet/cabinet3.png",
+  "/uploads/cabinet/cabinet4.png",
+  "/uploads/cabinet/cabinet5.png",
+  "/uploads/cabinet/cabinet6.png",
+  "/uploads/cabinet/cabinet7.png",
+  "/uploads/cabinet/cabinet8.png",
+  "/uploads/cabinet/cabinet9.png",
+  "/uploads/cabinet/cabinet10.png",
+  "/uploads/cabinet/cabinet11.png",
 ];
 
 const CabinetImages = ({ pageContent }: { pageContent?: any }) => {

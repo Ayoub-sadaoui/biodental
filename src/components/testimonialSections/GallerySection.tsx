@@ -7,44 +7,44 @@ import "./CustomBeforeAfterSlider.scss";
 
 const defaultBeforeAfterPairs = [
   {
-    before: "/before-after/before 1.png",
-    after: "/before-after/after 1.png",
+    before: "/uploads/before-after/before 1.png",
+    after: "/uploads/before-after/after 1.png",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 2.png",
-    after: "/before-after/after 2.png",
+    before: "/uploads/before-after/before 2.png",
+    after: "/uploads/before-after/after 2.png",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 3.png",
-    after: "/before-after/after 3.png",
+    before: "/uploads/before-after/before 3.png",
+    after: "/uploads/before-after/after 3.png",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 4.png",
-    after: "/before-after/after 4.png",
+    before: "/uploads/before-after/before 4.png",
+    after: "/uploads/before-after/after 4.png",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 5.png",
-    after: "/before-after/after 5.png",
+    before: "/uploads/before-after/before 5.png",
+    after: "/uploads/before-after/after 5.png",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 6.jpeg",
-    after: "/before-after/after 6.jpeg",
+    before: "/uploads/before-after/before 6.jpeg",
+    after: "/uploads/before-after/after 6.jpeg",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
   {
-    before: "/before-after/before 7.jpeg",
-    after: "/before-after/after 7.jpeg",
+    before: "/uploads/before-after/before 7.jpeg",
+    after: "/uploads/before-after/after 7.jpeg",
     beforeAlt: "Avant",
     afterAlt: "Après",
   },
@@ -73,11 +73,11 @@ const GallerySection = ({ pageContent }: { pageContent?: any }) => {
           before:
             pair?.before_image?.url ||
             pair?.before_image ||
-            "/before-after/before 1.png",
+            "/uploads/before-after/before 1.png",
           after:
             pair?.after_image?.url ||
             pair?.after_image ||
-            "/before-after/after 1.png",
+            "/uploads/before-after/after 1.png",
           beforeAlt: pair?.before_alt || "Avant",
           afterAlt: pair?.after_alt || "Après",
         }))

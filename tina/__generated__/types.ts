@@ -268,13 +268,6 @@ export type Global_Settings = Node & Document & {
   _values: Scalars['JSON']['output'];
 };
 
-export type ImageFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
@@ -293,7 +286,7 @@ export type Global_SettingsSocial_LinksFilter = {
 };
 
 export type Global_SettingsFilter = {
-  logo?: InputMaybe<ImageFilter>;
+  logo?: InputMaybe<StringFilter>;
   primary_phone?: InputMaybe<StringFilter>;
   secondary_phone?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
@@ -397,7 +390,7 @@ export type NumberFilter = {
 };
 
 export type HomepageReviewsFilter = {
-  avatar?: InputMaybe<ImageFilter>;
+  avatar?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
   rating?: InputMaybe<NumberFilter>;
   text?: InputMaybe<RichTextFilter>;
@@ -414,15 +407,15 @@ export type HomepageFilter = {
   hero_line_one_suffix?: InputMaybe<StringFilter>;
   hero_line_two?: InputMaybe<StringFilter>;
   hero_line_three?: InputMaybe<StringFilter>;
-  hero_image_1?: InputMaybe<ImageFilter>;
-  hero_image_2?: InputMaybe<ImageFilter>;
-  hero_image_3?: InputMaybe<ImageFilter>;
-  hero_arrow?: InputMaybe<ImageFilter>;
+  hero_image_1?: InputMaybe<StringFilter>;
+  hero_image_2?: InputMaybe<StringFilter>;
+  hero_image_3?: InputMaybe<StringFilter>;
+  hero_arrow?: InputMaybe<StringFilter>;
   hero_button_label?: InputMaybe<StringFilter>;
   hero_phone_label?: InputMaybe<StringFilter>;
   about_title?: InputMaybe<StringFilter>;
   about_text?: InputMaybe<RichTextFilter>;
-  about_image?: InputMaybe<ImageFilter>;
+  about_image?: InputMaybe<StringFilter>;
   features_title?: InputMaybe<StringFilter>;
   features?: InputMaybe<HomepageFeaturesFilter>;
   services_title?: InputMaybe<StringFilter>;
@@ -462,7 +455,7 @@ export type Service = Node & Document & {
 export type ServiceFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  image?: InputMaybe<ImageFilter>;
+  image?: InputMaybe<StringFilter>;
   cta_label?: InputMaybe<StringFilter>;
 };
 
@@ -512,15 +505,15 @@ export type About_PageFilter = {
   hero_button_label?: InputMaybe<StringFilter>;
   about_title?: InputMaybe<StringFilter>;
   about_text?: InputMaybe<RichTextFilter>;
-  about_image?: InputMaybe<ImageFilter>;
+  about_image?: InputMaybe<StringFilter>;
   vision_title?: InputMaybe<StringFilter>;
   vision_text?: InputMaybe<StringFilter>;
-  vision_image?: InputMaybe<ImageFilter>;
+  vision_image?: InputMaybe<StringFilter>;
   mission_title?: InputMaybe<StringFilter>;
   mission_text?: InputMaybe<StringFilter>;
-  mission_image?: InputMaybe<ImageFilter>;
+  mission_image?: InputMaybe<StringFilter>;
   cabinet_title?: InputMaybe<StringFilter>;
-  cabinet_images?: InputMaybe<ImageFilter>;
+  cabinet_images?: InputMaybe<StringFilter>;
   send_message_title?: InputMaybe<StringFilter>;
   cta_title?: InputMaybe<StringFilter>;
   cta_description?: InputMaybe<StringFilter>;
@@ -577,8 +570,8 @@ export type Testimonials_Page = Node & Document & {
 };
 
 export type Testimonials_PageBefore_After_PairsFilter = {
-  before_image?: InputMaybe<ImageFilter>;
-  after_image?: InputMaybe<ImageFilter>;
+  before_image?: InputMaybe<StringFilter>;
+  after_image?: InputMaybe<StringFilter>;
   before_alt?: InputMaybe<StringFilter>;
   after_alt?: InputMaybe<StringFilter>;
 };
@@ -597,9 +590,9 @@ export type Testimonials_PageFilter = {
   hero_title_line_three?: InputMaybe<StringFilter>;
   hero_description?: InputMaybe<StringFilter>;
   hero_button_label?: InputMaybe<StringFilter>;
-  hero_image_1?: InputMaybe<ImageFilter>;
-  hero_image_2?: InputMaybe<ImageFilter>;
-  hero_image_3?: InputMaybe<ImageFilter>;
+  hero_image_1?: InputMaybe<StringFilter>;
+  hero_image_2?: InputMaybe<StringFilter>;
+  hero_image_3?: InputMaybe<StringFilter>;
   before_after_title?: InputMaybe<StringFilter>;
   before_after_pairs?: InputMaybe<Testimonials_PageBefore_After_PairsFilter>;
   more_title?: InputMaybe<StringFilter>;

@@ -18,7 +18,9 @@ var config_default = defineConfig({
     }
   },
   ui: {
-    previewUrl: () => ({ url: "http://localhost:3000" })
+    previewUrl: () => ({
+      url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    })
   },
   // See https://tina.io/docs/schema/ for more information
   schema: {
@@ -36,9 +38,12 @@ var config_default = defineConfig({
         },
         fields: [
           {
-            type: "image",
+            type: "string",
             name: "logo",
-            label: "Clinic Logo"
+            label: "Clinic Logo",
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -171,24 +176,36 @@ var config_default = defineConfig({
             label: "Hero Line Three"
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_1",
-            label: "Hero Inline Image 1"
+            label: "Hero Inline Image 1",
+            ui: {
+              component: "image"
+            }
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_2",
-            label: "Hero Inline Image 2"
+            label: "Hero Inline Image 2",
+            ui: {
+              component: "image"
+            }
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_3",
-            label: "Hero Inline Image 3"
+            label: "Hero Inline Image 3",
+            ui: {
+              component: "image"
+            }
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_arrow",
-            label: "Hero Sparkle / Decorative Arrow"
+            label: "Hero Sparkle / Decorative Arrow",
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -211,9 +228,12 @@ var config_default = defineConfig({
             label: "About Narrative Copy"
           },
           {
-            type: "image",
+            type: "string",
             name: "about_image",
-            label: "About Section Portrait"
+            label: "About Section Portrait",
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -276,9 +296,12 @@ var config_default = defineConfig({
             },
             fields: [
               {
-                type: "image",
+                type: "string",
                 name: "avatar",
-                label: "Reviewer Profile Picture"
+                label: "Reviewer Profile Picture",
+                ui: {
+                  component: "image"
+                }
               },
               {
                 type: "string",
@@ -372,9 +395,12 @@ var config_default = defineConfig({
             label: "Brief Description (shown on card)"
           },
           {
-            type: "image",
+            type: "string",
             name: "image",
-            label: "Card Image"
+            label: "Card Image",
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -425,22 +451,42 @@ var config_default = defineConfig({
             label: "About Narrative Copy"
           },
           {
-            type: "image",
+            type: "string",
             name: "about_image",
-            label: "About Section Portrait"
+            label: "About Section Portrait",
+            ui: {
+              component: "image"
+            }
           },
           { type: "string", name: "vision_title", label: "Vision Title" },
           { type: "string", name: "vision_text", label: "Vision Text" },
-          { type: "image", name: "vision_image", label: "Vision Image" },
+          {
+            type: "string",
+            name: "vision_image",
+            label: "Vision Image",
+            ui: {
+              component: "image"
+            }
+          },
           { type: "string", name: "mission_title", label: "Mission Title" },
           { type: "string", name: "mission_text", label: "Mission Text" },
-          { type: "image", name: "mission_image", label: "Mission Image" },
+          {
+            type: "string",
+            name: "mission_image",
+            label: "Mission Image",
+            ui: {
+              component: "image"
+            }
+          },
           { type: "string", name: "cabinet_title", label: "Cabinet Title" },
           {
-            type: "image",
+            type: "string",
             name: "cabinet_images",
             label: "Cabinet Images",
-            list: true
+            list: true,
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -502,19 +548,28 @@ var config_default = defineConfig({
             label: "Hero Button Label"
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_1",
-            label: "Hero Image 1"
+            label: "Hero Image 1",
+            ui: {
+              component: "image"
+            }
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_2",
-            label: "Hero Image 2"
+            label: "Hero Image 2",
+            ui: {
+              component: "image"
+            }
           },
           {
-            type: "image",
+            type: "string",
             name: "hero_image_3",
-            label: "Hero Image 3"
+            label: "Hero Image 3",
+            ui: {
+              component: "image"
+            }
           },
           {
             type: "string",
@@ -533,14 +588,20 @@ var config_default = defineConfig({
             },
             fields: [
               {
-                type: "image",
+                type: "string",
                 name: "before_image",
-                label: "Before Image"
+                label: "Before Image",
+                ui: {
+                  component: "image"
+                }
               },
               {
-                type: "image",
+                type: "string",
                 name: "after_image",
-                label: "After Image"
+                label: "After Image",
+                ui: {
+                  component: "image"
+                }
               },
               {
                 type: "string",

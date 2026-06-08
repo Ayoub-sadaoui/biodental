@@ -8,37 +8,37 @@ const fallbackSections = [
     title: "Préservation des dents",
     description:
       "Chez BioDental, notre approche de la préservation dentaire met l'accent sur le maintien de la santé et de la fonctionnalité de vos dents naturelles.",
-    image: "/services/services1.png",
+    image: "/uploads/services/services1.png",
   },
   {
     title: "Implants dentaires",
     description:
       "Les implants dentaires offrent une solution durable et esthétique pour remplacer les dents manquantes.",
-    image: "/services/services2.png",
+    image: "/uploads/services/services2.png",
   },
   {
     title: "Prothèses dentaires fixes",
     description:
       "Nos prothèses dentaires fixes, y compris les couronnes et les bridges, sont conçues pour restaurer la solidité et l'apparence des dents endommagées ou manquantes.",
-    image: "/services/services3.png",
+    image: "/uploads/services/services3.png",
   },
   {
     title: "Chirurgie orale et pathologie",
     description:
       "BioDental offre des services complets de chirurgie et de pathologie buccales pour traiter les affections dentaires complexes.",
-    image: "/services/services4.png",
+    image: "/uploads/services/services4.png",
   },
   {
     title: "ODF orthodontique",
     description:
       "Nos services d'orthodontie visent à corriger les malocclusions dentaires et des mâchoires, améliorant ainsi la fonction et l'apparence.",
-    image: "/services/services5.png",
+    image: "/uploads/services/services5.png",
   },
   {
     title: "Denisterie esthétique",
     description:
       "Chez BioDental, nos soins esthétiques subliment votre sourire : blanchiment, facettes, collage, remodelage gingival...",
-    image: "/services/services6.png",
+    image: "/uploads/services/services6.png",
   },
 ];
 

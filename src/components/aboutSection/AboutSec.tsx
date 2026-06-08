@@ -14,7 +14,7 @@ export const AboutSec = ({
 }) => {
   const data = pageContent || homepage?.data || {};
   const aboutTitle = data.about_title || "Derrière chaque sourire confiant";
-  const aboutImage = resolveImage(data.about_image, "/image-7.png");
+  const aboutImage = resolveImage(data.about_image, "/uploads/image-7.png");
   const aboutCopy =
     extractPlainText(data.about_text) ||
     "Chez BioDental, nous pensons que la grande dentisterie commence par l'écoute. Depuis l'obtention de mon diplôme en 2019 à Annaba, j'ai poursuivi une formation avancée en petite chirurgie, en endodontie mécanisée et en implantologie — mais ce qui définit véritablement mon travail, c'est le lien humain derrière chaque cas.";

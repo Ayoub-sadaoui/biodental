@@ -37,7 +37,7 @@ export function PhonePopup({
 const initialImages = [
   {
     id: 1,
-    src: "/TESI-PAGE/t-hero-1.avif",
+    src: "/uploads/TESI-PAGE/t-hero-1.avif",
     alt: "Smile 1",
     style: "z-30 left-1/2 -translate-x-1/2 top-0 rotate-[15deg] shadow-2xl",
     width: 180,
@@ -45,7 +45,7 @@ const initialImages = [
   },
   {
     id: 2,
-    src: "/TESI-PAGE/t-hero-2.avif",
+    src: "/uploads/TESI-PAGE/t-hero-2.avif",
     alt: "Smile 2",
     style: "z-20 left-[10%] top-[120px] rotate-[-12deg] shadow-xl",
     width: 170,
@@ -53,7 +53,7 @@ const initialImages = [
   },
   {
     id: 3,
-    src: "/TESI-PAGE/t-hero-3.avif",
+    src: "/uploads/TESI-PAGE/t-hero-3.avif",
     alt: "Smile 3",
     style: "z-10 left-[55%] top-[150px] rotate-[8deg] shadow-lg",
     width: 170,
@@ -85,9 +85,9 @@ export default function TestimonialHeroSection({
   const heroDescription =
     pageContent?.hero_description ||
     "Découvrez le confort et la confiance que nos soins dentaires personnalisés ont apportés à des personnes de tous âges.";
-  const heroImage1 = pageContent?.hero_image_1 || "/TESI-PAGE/t-hero-1.png";
-  const heroImage2 = pageContent?.hero_image_2 || "/TESI-PAGE/t-hero-2.png";
-  const heroImage3 = pageContent?.hero_image_3 || "/TESI-PAGE/t-hero-3.png";
+  const heroImage1 = pageContent?.hero_image_1 || "/uploads/TESI-PAGE/t-hero-1.png";
+  const heroImage2 = pageContent?.hero_image_2 || "/uploads/TESI-PAGE/t-hero-2.png";
+  const heroImage3 = pageContent?.hero_image_3 || "/uploads/TESI-PAGE/t-hero-3.png";
   return (
     <section className="w-full bg-[#9aae92] flex justify-center items-center pt-[140px] pb-[60px]  xl:py-[40px] h-full xl:h-[100vh] overflow-hidden">
       <div className="max-w-6xl  xl:pt-10 w-full mx-auto flex flex-col xl:flex-row gap-8 xl:gap-0 px-[24px]  items-center justify-center ">

@@ -13,28 +13,28 @@ const reviews: Array<{
   platform: "google" | "instagram" | "facebook";
 }> = [
   {
-    avatar: "/reviews/aimen.png",
+    avatar: "/uploads/reviews/aimen.png",
     name: "Amira badraoui",
     rating: 5,
     text: "Un accueil chaleureux w khedma machallah",
     platform: "google",
   },
   {
-    avatar: "/reviews/amin.png",
+    avatar: "/uploads/reviews/amin.png",
     name: "amine ghachi",
     rating: 5,
     text: "Bravos docteur Ya3tik Saha 🔥👌😷",
     platform: "instagram",
   },
   {
-    avatar: "/reviews/aimen.png",
+    avatar: "/uploads/reviews/aimen.png",
     name: "Amira badraoui",
     rating: 5,
     text: "Vraiment un beau travail, vous êtes le meilleur",
     platform: "facebook",
   },
   {
-    avatar: "/reviews/image.png",
+    avatar: "/uploads/reviews/image.png",
     name: "soukri houri",
     rating: 5,
     text: "Vraiment merci khedma mashallah",
@@ -48,7 +48,7 @@ export const Reviews = ({ homepage }: { homepage?: any }) => {
   const mappedReviews =
     Array.isArray(data.reviews) && data.reviews.length > 0
       ? data.reviews.map((review: any) => ({
-          avatar: review.avatar?.url || "/reviews/aimen.png",
+          avatar: review.avatar?.url || "/uploads/reviews/aimen.png",
           name: review.name || "Anonymous",
           rating: Number(review.rating || 5),
           text: extractPlainText(review.text),

@@ -37,14 +37,14 @@ export const Services = ({
       title: "Préservation dentaire",
       description:
         "Des traitements doux pour réparer et protéger vos dents naturelles.",
-      image: "/image-3.png",
+      image: "/uploads/image-3.png",
       cta_label: "More",
     },
     {
       id: 2,
       title: "Implants dentaires",
       description: "Permanent solutions to remplacer les dents manquantes.",
-      image: "/image-4.png",
+      image: "/uploads/image-4.png",
       cta_label: "More",
     },
     {
@@ -52,7 +52,7 @@ export const Services = ({
       title: "Prothèses dentaires",
       description:
         "Couronnes et bridges personnalisés : durabilité et esthétique naturelle.",
-      image: "/image-5.png",
+      image: "/uploads/image-5.png",
       cta_label: "More",
     },
   ];
@@ -62,7 +62,7 @@ export const Services = ({
       id: 4,
       title: "Chirurgie orale et",
       description: "Soins spécialisés pour problèmes dentaires complexes.",
-      image: "/image.png",
+      image: "/uploads/image.png",
       cta_label: "More",
     },
     {
@@ -70,7 +70,7 @@ export const Services = ({
       title: "Orthodontie (ODF)",
       description:
         "Alignez les dents et les mâchoires pour un sourire plus sain et plus confiant.",
-      image: "/image-1.png",
+      image: "/uploads/image-1.png",
       cta_label: "More",
     },
     {
@@ -78,7 +78,7 @@ export const Services = ({
       title: "Dentisterie esthétique",
       description:
         "Améliorer l'apparence de vos dents pour un sourire rayonnant.",
-      image: "/image-2.png",
+      image: "/uploads/image-2.png",
       cta_label: "More",
     },
   ];
@@ -92,7 +92,7 @@ export const Services = ({
           image:
             service.data?.image?.url ||
             fallbackTopRowServices[index % 6]?.image ||
-            "/image-3.png",
+            "/uploads/image-3.png",
           price: toText(service.data?.price, ""),
           cta_label: service.data?.cta_label || "More",
         }))
@@ -118,7 +118,7 @@ export const Services = ({
             </div>
             <div
               className="w-[30px] md:w-[57px] h-[30px] md:h-[57px] absolute right-[33px] md:right-[-40px] -top-0 md:top-[-10px] rotate-y-180 bg-cover"
-              style={{ backgroundImage: "url(..//image-6.png)" }}
+              style={{ backgroundImage: "url(/uploads/image-6.png)" }}
             />
           </div>
         </div>

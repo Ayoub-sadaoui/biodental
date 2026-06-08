@@ -18,7 +18,7 @@ export default async function RootLayout({
   } catch (error) {
     console.error("Failed to fetch global settings", error);
     settingsData = {
-      logo: "/logo.png",
+      logo: "/uploads/logo.png",
       primary_phone: DEFAULT_PHONE_NUMBERS[0],
       secondary_phone: DEFAULT_PHONE_NUMBERS[1],
       email: "biodental.dr.fetnaci@gmail.com",

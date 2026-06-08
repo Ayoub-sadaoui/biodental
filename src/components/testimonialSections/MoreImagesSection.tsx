@@ -5,17 +5,17 @@ import { useElementOnScreen } from "@/hooks/useElementOnScreen";
 const defaultPanels = [
   {
     kind: "video",
-    src: "/video/vid-simle-2.mp4",
-    poster: "/video/vid-img-2.png",
+    src: "/uploads/video/vid-simle-2.mp4",
+    poster: "/uploads/video/vid-img-2.png",
     alt: "Video 1",
   },
-  { kind: "image", src: "/tesi-page/t-hero-5.png", alt: "Top right hero" },
-  { kind: "image", src: "/tesi-page/t-hero-1.png", alt: "Center hero" },
-  { kind: "image", src: "/tesi-page/t-hero-4.png", alt: "Bottom left hero" },
+  { kind: "image", src: "/uploads/tesi-page/t-hero-5.png", alt: "Top right hero" },
+  { kind: "image", src: "/uploads/tesi-page/t-hero-1.png", alt: "Center hero" },
+  { kind: "image", src: "/uploads/tesi-page/t-hero-4.png", alt: "Bottom left hero" },
   {
     kind: "video",
-    src: "/video/vid-smile-1.mp4",
-    poster: "/video/vid-img-1.png",
+    src: "/uploads/video/vid-smile-1.mp4",
+    poster: "/uploads/video/vid-img-1.png",
     alt: "Video 2",
   },
 ];
@@ -42,7 +42,7 @@ const MoreImagesSection = ({ pageContent }: { pageContent?: any }) => {
           playsInline
           muted
           loop
-          poster={panel.poster || "/video/vid-img-2.png"}
+          poster={panel.poster || "/uploads/video/vid-img-2.png"}
         >
           <source src={panel.src} type="video/mp4" />
           Your browser does not support the video tag.
