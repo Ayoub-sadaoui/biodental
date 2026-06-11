@@ -8,6 +8,7 @@ fragment Global_settingsParts on Global_settings {
   navigation_links {
     __typename
     label
+    path
   }
   social_links {
     __typename

@@ -106,7 +106,7 @@ export default function TestimonialHeroSection({
               {heroDescription}
             </p>
             <div
-              className="relative flex flex-row items-center xl:items-start gap-4 p-1"
+              className="relative flex flex-row items-center justify-center gap-4 p-1"
               onMouseLeave={() => setShowPopup(false)}
             >
               <a

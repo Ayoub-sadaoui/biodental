@@ -16,6 +16,7 @@ export const Global_SettingsPartsFragmentDoc = gql`
   navigation_links {
     __typename
     label
+    path
   }
   social_links {
     __typename

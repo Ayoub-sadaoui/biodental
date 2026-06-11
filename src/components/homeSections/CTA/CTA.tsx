@@ -25,7 +25,7 @@ export const CTA = ({ homepage, settings }: { homepage?: any; settings?: any }) 
               "Voir les rendez-vous disponibles et profitez de la dentisterie bien faite."}
           </p>
           <div
-            className="relative flex flex-row items-center gap-4 p-1"
+            className="relative flex flex-row items-center justify-center gap-4 p-1"
             onMouseLeave={() => setShowPopup(false)}
           >
             <a

@@ -240,6 +240,7 @@ export type DocumentNode = Global_Settings | Homepage | Service | About_Page | T
 export type Global_SettingsNavigation_Links = {
   __typename?: 'Global_settingsNavigation_links';
   label?: Maybe<Scalars['String']['output']>;
+  path?: Maybe<Scalars['String']['output']>;
 };
 
 export type Global_SettingsSocial_Links = {
@@ -278,6 +279,7 @@ export type StringFilter = {
 
 export type Global_SettingsNavigation_LinksFilter = {
   label?: InputMaybe<StringFilter>;
+  path?: InputMaybe<StringFilter>;
 };
 
 export type Global_SettingsSocial_LinksFilter = {
@@ -745,6 +747,7 @@ export type DocumentMutation = {
 
 export type Global_SettingsNavigation_LinksMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
+  path?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Global_SettingsSocial_LinksMutation = {
@@ -874,7 +877,7 @@ export type Testimonials_PageMutation = {
   more_panels?: InputMaybe<Array<InputMaybe<Testimonials_PageMore_PanelsMutation>>>;
 };
 
-export type Global_SettingsPartsFragment = { __typename: 'Global_settings', logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null };
+export type Global_SettingsPartsFragment = { __typename: 'Global_settings', logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null, path?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null };
 
 export type HomepagePartsFragment = { __typename: 'Homepage', hero_line_one?: string | null, hero_line_one_suffix?: string | null, hero_line_two?: string | null, hero_line_three?: string | null, hero_image_1?: string | null, hero_image_2?: string | null, hero_image_3?: string | null, hero_arrow?: string | null, hero_button_label?: string | null, hero_phone_label?: string | null, about_title?: string | null, about_text?: any | null, about_image?: string | null, features_title?: string | null, services_title?: string | null, reviews_title?: string | null, faq_title?: string | null, cta_title?: string | null, cta_description?: string | null, cta_button_label?: string | null, features?: Array<{ __typename: 'HomepageFeatures', title?: string | null, description?: any | null, icon_key?: string | null, border_color?: string | null } | null> | null, reviews?: Array<{ __typename: 'HomepageReviews', avatar?: string | null, name?: string | null, rating?: number | null, text?: any | null, platform?: string | null } | null> | null, faqs?: Array<{ __typename: 'HomepageFaqs', question?: string | null, answer?: any | null } | null> | null };
 
@@ -889,7 +892,7 @@ export type Global_SettingsQueryVariables = Exact<{
 }>;
 
 
-export type Global_SettingsQuery = { __typename?: 'Query', global_settings: { __typename: 'Global_settings', id: string, logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null } };
+export type Global_SettingsQuery = { __typename?: 'Query', global_settings: { __typename: 'Global_settings', id: string, logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null, path?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null } };
 
 export type Global_SettingsConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -901,7 +904,7 @@ export type Global_SettingsConnectionQueryVariables = Exact<{
 }>;
 
 
-export type Global_SettingsConnectionQuery = { __typename?: 'Query', global_settingsConnection: { __typename?: 'Global_settingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Global_settingsConnectionEdges', cursor: string, node?: { __typename: 'Global_settings', id: string, logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null } | null } | null> | null } };
+export type Global_SettingsConnectionQuery = { __typename?: 'Query', global_settingsConnection: { __typename?: 'Global_settingsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'Global_settingsConnectionEdges', cursor: string, node?: { __typename: 'Global_settings', id: string, logo?: string | null, primary_phone?: string | null, secondary_phone?: string | null, email?: string | null, address?: string | null, footer_services?: Array<string | null> | null, services_page_title?: string | null, footer_text?: string | null, footer_credit?: string | null, cta_button_label?: string | null, booking_url?: string | null, booking_button_label?: string | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, navigation_links?: Array<{ __typename: 'Global_settingsNavigation_links', label?: string | null, path?: string | null } | null> | null, social_links?: Array<{ __typename: 'Global_settingsSocial_links', platform?: string | null, url?: string | null } | null> | null } | null } | null> | null } };
 
 export type HomepageQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -990,6 +993,7 @@ export const Global_SettingsPartsFragmentDoc = gql`
   navigation_links {
     __typename
     label
+    path
   }
   social_links {
     __typename

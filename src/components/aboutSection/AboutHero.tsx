@@ -80,7 +80,7 @@ const AboutHero = ({
             <span className="font-extralight">, {heroSuffix}</span>
           </p>
           <div
-            className="relative flex flex-row items-center gap-4 p-1"
+            className="relative flex flex-row items-center justify-center gap-4 p-1"
             onMouseLeave={() => setShowPopup(false)}
           >
             <a
