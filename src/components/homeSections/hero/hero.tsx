@@ -5,9 +5,11 @@ import { PhonePopup } from "../../testimonialSections/testimonialsherosection";
 import { useRef, useState } from "react";
 import "animate.css";
 import { resolveImage } from "../../../lib/cmsHelpers";
+import { FiPhone } from "react-icons/fi";
 
-export const Hero = ({ homepage }: { homepage?: any }) => {
+export const Hero = ({ homepage, settings }: { homepage?: any; settings?: any }) => {
   const data = homepage?.data || {};
+  const settingsData = settings?.data || {};
   const [showPopup, setShowPopup] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,8 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
   const heroLineTwo = data.hero_line_two || "Naturel: soins doux,";
   const heroLineThree = data.hero_line_three || "Priorité au Patient.";
   const heroButtonLabel = data.hero_button_label || "Prendre rendez-vous";
+  const bookingUrl = settingsData.booking_url || "#";
+  const bookingLabel = settingsData.booking_button_label || "Réserver en ligne";
 
   const heroImage1 = resolveImage(data.hero_image_1, "/uploads/hero1.avif");
   const heroImage2 = resolveImage(data.hero_image_2, "/uploads/hero2.avif");
@@ -117,18 +121,26 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
             />
           </span>
         </div>
-        <div
-          className="relative flex flex-col items-center p-1"
+        <div className="relative flex flex-row items-center justify-center gap-4 mt-4"
           onMouseLeave={() => setShowPopup(false)}
         >
+          <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-[#9aae92] hover:bg-[#8a9e82] text-white rounded-lg py-2 px-6 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms] no-underline"
+            >
+              <span className="text-[16px] leading-[16.8px] font-semibold">
+                {bookingLabel}
+              </span>
+            </a>
           <Button
             ref={btnRef}
-            className="mt-4 relative bg-[#243520] hover:bg-[#222] text-white rounded-lg py-2 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms]"
+            className="relative bg-[#243520] hover:bg-[#222] text-white rounded-lg p-3 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms]"
             onClick={() => setShowPopup((v) => !v)}
+            aria-label="Afficher les numéros de téléphone"
           >
-            <span className="text-[16px] leading-[16.8px] font-semibold">
-              {heroButtonLabel}
-            </span>
+            <FiPhone size={22} />
             {showPopup && (
               <div
                 ref={popupRef}
@@ -241,19 +253,28 @@ export const Hero = ({ homepage }: { homepage?: any }) => {
             />
           </span>
         </div>
-        <div className="pt-2 h-[40px]">
+        <div className="pt-2">
           <div
-            className="relative flex flex-col items-center p-1"
+            className="relative flex flex-row items-center justify-center gap-3 p-1"
             onMouseLeave={() => setShowPopup(false)}
           >
+            <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center justify-center bg-[#9aae92] hover:bg-[#8a9e82] text-white rounded-lg py-2 px-4 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms] no-underline"
+              >
+                <span className="text-[16px] leading-[16.8px] font-semibold">
+                  {bookingLabel}
+                </span>
+              </a>
             <Button
               ref={btnRef}
-              className="mt-4 relative bg-[#243520] hover:bg-[#222] text-white rounded-lg py-2 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms]"
+              className="mt-4 relative bg-[#243520] hover:bg-[#222] text-white rounded-lg p-3 shadow-[0px_0.71px_0.71px_-0.62px_#00000026,0px_1.81px_1.81px_-1.25px_#00000024,0px_3.62px_3.62px_-1.88px_#00000024,0px_6.87px_6.87px_-2.5px_#00000021,0px_13.65px_13.65px_-3.12px_#0000001a,0px_30px_30px_-3.75px_#0000000d] transition-colors duration-[400ms]"
               onClick={() => setShowPopup((v) => !v)}
+              aria-label="Afficher les numéros de téléphone"
             >
-              <span className="text-[16px] leading-[16.8px] font-normal">
-                {heroButtonLabel}
-              </span>
+              <FiPhone size={22} />
               {showPopup && (
                 <div
                   ref={popupRef}

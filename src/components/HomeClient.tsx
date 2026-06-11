@@ -15,6 +15,7 @@ type HomeClientProps = {
   variables: any;
   data: any;
   services: any[];
+  settings: any;
 };
 
 export default function HomeClient(props: HomeClientProps) {
@@ -28,12 +29,16 @@ export default function HomeClient(props: HomeClientProps) {
     data: data?.homepage || {},
   };
 
+  const settings = {
+    data: props.settings?.global_settings || null,
+  };
+
   return (
     <div className="w-full bg-[#F7F7F5]">
       <div className="relative">
         <div className="w-full bg-[#F7F7F5] overflow-hidden">
           <div className="w-full">
-            <Hero homepage={homepage} />
+            <Hero homepage={homepage} settings={settings} />
           </div>
           <About homepage={homepage} />
           <Features homepage={homepage} />
@@ -42,7 +47,7 @@ export default function HomeClient(props: HomeClientProps) {
           <FAQ homepage={homepage} />
         </div>
       </div>
-      <CTA homepage={homepage} />
+      <CTA homepage={homepage} settings={settings} />
     </div>
   );
 }

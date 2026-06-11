@@ -8,7 +8,6 @@ fragment Global_settingsParts on Global_settings {
   navigation_links {
     __typename
     label
-    path
   }
   social_links {
     __typename
@@ -20,6 +19,8 @@ fragment Global_settingsParts on Global_settings {
   footer_text
   footer_credit
   cta_button_label
+  booking_url
+  booking_button_label
 }
 
 fragment HomepageParts on Homepage {

@@ -86,11 +86,6 @@ export default defineConfig({
                 name: "label",
                 label: "Label",
               },
-              {
-                type: "string",
-                name: "path",
-                label: "Path (e.g. /about, /services)",
-              },
             ],
           },
           {
@@ -142,6 +137,18 @@ export default defineConfig({
             type: "string",
             name: "cta_button_label",
             label: "CTA Button Label",
+          },
+          {
+            type: "string",
+            name: "booking_url",
+            label: "Online Booking URL",
+            description: "Lien vers le formulaire de réservation en ligne (ex: Doctolib, Calendly)",
+          },
+          {
+            type: "string",
+            name: "booking_button_label",
+            label: "Booking Button Label",
+            description: 'Texte du bouton de réservation (ex: "Réserver en ligne")',
           },
         ],
       },
@@ -645,12 +652,18 @@ export default defineConfig({
               {
                 type: "string",
                 name: "src",
-                label: "Source Path",
+                label: "Video Source",
+                ui: {
+                  component: "image",
+                },
               },
               {
                 type: "string",
                 name: "poster",
                 label: "Video Poster Path",
+                ui: {
+                  component: "image",
+                },
               },
               {
                 type: "string",

@@ -8,9 +8,10 @@ export default async function Page() {
   try {
     const servicesDir = path.join(process.cwd(), "content", "services");
 
-    const [homepageRes, serviceFiles] = await Promise.all([
+    const [homepageRes, serviceFiles, settingsRes] = await Promise.all([
       client.queries.homepage({ relativePath: "index.json" }),
       readdir(servicesDir),
+      client.queries.global_settings({ relativePath: "settings.json" }),
     ]);
 
     const sortedServiceFiles = serviceFiles
@@ -30,6 +31,7 @@ export default async function Page() {
         variables={homepageRes.variables}
         data={homepageRes.data}
         services={services}
+        settings={settingsRes.data}
       />
     );
   } catch (error) {
@@ -41,6 +43,7 @@ export default async function Page() {
         variables={{}}
         data={{ homepage: {} }}
         services={[]}
+        settings={null}
       />
     );
   }

@@ -101,7 +101,6 @@ union DocumentNode = Global_settings | Homepage | Service | About_page | Testimo
 
 type Global_settingsNavigation_links {
   label: String
-  path: String
 }
 
 type Global_settingsSocial_links {
@@ -122,6 +121,8 @@ type Global_settings implements Node & Document {
   footer_text: String
   footer_credit: String
   cta_button_label: String
+  booking_url: String
+  booking_button_label: String
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -136,7 +137,6 @@ input StringFilter {
 
 input Global_settingsNavigation_linksFilter {
   label: StringFilter
-  path: StringFilter
 }
 
 input Global_settingsSocial_linksFilter {
@@ -157,6 +157,8 @@ input Global_settingsFilter {
   footer_text: StringFilter
   footer_credit: StringFilter
   cta_button_label: StringFilter
+  booking_url: StringFilter
+  booking_button_label: StringFilter
 }
 
 type Global_settingsConnectionEdges {
@@ -489,7 +491,6 @@ input DocumentMutation {
 
 input Global_settingsNavigation_linksMutation {
   label: String
-  path: String
 }
 
 input Global_settingsSocial_linksMutation {
@@ -510,6 +511,8 @@ input Global_settingsMutation {
   footer_text: String
   footer_credit: String
   cta_button_label: String
+  booking_url: String
+  booking_button_label: String
 }
 
 input HomepageFeaturesMutation {

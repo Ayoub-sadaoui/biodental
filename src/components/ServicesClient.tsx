@@ -3,7 +3,6 @@
 import React, { useState, useCallback } from "react";
 import { useTina } from "tinacms/dist/react";
 import { Nav } from "./ui/nav";
-import { Footer } from "./homeSections/footer";
 import ServicesSec from "./ServicesSections/ServicesSec";
 import { Features } from "./homeSections/features/Features";
 import { CTA } from "./homeSections/CTA/CTA";
@@ -75,8 +74,7 @@ export default function ServicesClient(props: ServicesClientProps) {
       <Nav settings={{ data: settingsData }} />
       <Features issevice={true} homepage={{ data: featuresSection }} />
       <ServicesSec services={services} settings={{ data: settingsData }} />
-      <CTA homepage={{ data: featuresSection }} />
-      <Footer settings={{ data: settingsData }} />
+      <CTA homepage={{ data: featuresSection }} settings={{ data: settingsData }} />
     </div>
   );
 }

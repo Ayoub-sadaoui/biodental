@@ -26,6 +26,8 @@ export default async function RootLayout({
       footer_text:
         "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement",
       cta_button_label: "Prendre rendez-vous",
+      booking_url: "",
+      booking_button_label: "Réserver en ligne",
       navigation_links: [],
       social_links: [],
     };

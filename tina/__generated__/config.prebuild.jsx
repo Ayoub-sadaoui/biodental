@@ -80,11 +80,6 @@ var config_default = defineConfig({
                 type: "string",
                 name: "label",
                 label: "Label"
-              },
-              {
-                type: "string",
-                name: "path",
-                label: "Path (e.g. /about, /services)"
               }
             ]
           },
@@ -137,6 +132,18 @@ var config_default = defineConfig({
             type: "string",
             name: "cta_button_label",
             label: "CTA Button Label"
+          },
+          {
+            type: "string",
+            name: "booking_url",
+            label: "Online Booking URL",
+            description: "Lien vers le formulaire de r\xE9servation en ligne (ex: Doctolib, Calendly)"
+          },
+          {
+            type: "string",
+            name: "booking_button_label",
+            label: "Booking Button Label",
+            description: 'Texte du bouton de r\xE9servation (ex: "R\xE9server en ligne")'
           }
         ]
       },
@@ -640,12 +647,18 @@ var config_default = defineConfig({
               {
                 type: "string",
                 name: "src",
-                label: "Source Path"
+                label: "Video Source",
+                ui: {
+                  component: "image"
+                }
               },
               {
                 type: "string",
                 name: "poster",
-                label: "Video Poster Path"
+                label: "Video Poster Path",
+                ui: {
+                  component: "image"
+                }
               },
               {
                 type: "string",

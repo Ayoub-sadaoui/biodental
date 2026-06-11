@@ -16,7 +16,6 @@ export const Global_SettingsPartsFragmentDoc = gql`
   navigation_links {
     __typename
     label
-    path
   }
   social_links {
     __typename
@@ -28,6 +27,8 @@ export const Global_SettingsPartsFragmentDoc = gql`
   footer_text
   footer_credit
   cta_button_label
+  booking_url
+  booking_button_label
 }
     `;
 export const HomepagePartsFragmentDoc = gql`

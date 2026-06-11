@@ -3,7 +3,6 @@
 import React from "react";
 import { useTina } from "tinacms/dist/react";
 import { Nav } from "./ui/nav";
-import { Footer } from "./homeSections/footer/footer";
 import { Reviews } from "./homeSections/reviews/page";
 import {
   TestimonialHeroSection,
@@ -41,8 +40,7 @@ export default function TestimonialsClient(props: TestimonialsClientProps) {
       <Reviews homepage={{ data: homepageData }} />
       <GallerySection pageContent={pageContent} />
       <MoreImagesSection pageContent={pageContent} />
-      <CTA homepage={{ data: homepageData }} />
-      <Footer settings={{ data: settingsData }} />
+      <CTA homepage={{ data: homepageData }} settings={{ data: settingsData }} />
     </div>
   );
 }

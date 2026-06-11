@@ -3,7 +3,6 @@
 import React from "react";
 import { useTina } from "tinacms/dist/react";
 import { Nav } from "./ui/nav";
-import { Footer } from "./homeSections/footer";
 import AboutHero from "./aboutSection/AboutHero";
 import { AboutSec } from "./aboutSection/AboutSec";
 import Cabinet from "./aboutSection/Cabinet";
@@ -41,8 +40,7 @@ export default function AboutClient(props: AboutClientProps) {
       <Cabinet pageContent={pageContent} />
       <Contact settings={{ data: settingsData }} pageContent={pageContent} />
       <SendMessage pageContent={pageContent} />
-      <CTA homepage={{ data: pageContent }} />
-      <Footer settings={{ data: settingsData }} />
+      <CTA homepage={{ data: pageContent }} settings={{ data: settingsData }} />
     </div>
   );
 }
