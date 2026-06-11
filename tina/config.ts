@@ -86,6 +86,12 @@ export default defineConfig({
                 name: "label",
                 label: "Label",
               },
+              {
+                type: "string",
+                name: "path",
+                label: "Path",
+                description: "ex: /about, /services, /testimonials",
+              },
             ],
           },
           {

@@ -9,16 +9,20 @@
   "address": "Annaba, Algérie",
   "navigation_links": [
     {
-      "label": "Accueil"
+      "label": "Accueil",
+      "path": "/"
     },
     {
-      "label": "À propos"
+      "label": "À propos",
+      "path": "/about"
     },
     {
-      "label": "Services"
+      "label": "Services",
+      "path": "/services"
     },
     {
-      "label": "Témoignages"
+      "label": "Témoignages",
+      "path": "/testimonials"
     }
   ],
   "social_links": [
@@ -44,6 +48,6 @@
   "footer_text": "© BioDental clinic 2024 | Privacy Policy | Accessibility Statement",
   "footer_credit": "Made by Ayoub SADAOUI",
   "cta_button_label": "Prendre rendez-vous",
-  "booking_url": "",
-  "booking_button_label": ""
+  "booking_url": "#",
+  "booking_button_label": "Réserver en ligne"
 }
